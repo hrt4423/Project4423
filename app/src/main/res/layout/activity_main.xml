@@ -18,10 +18,12 @@
 
     <ImageView
         android:id="@+id/sq"
-        android:layout_height="wrap_content"
         android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
         android:src="@drawable/test_square"
-        android:layout_gravity="center_vertical"/>
+        tools:layout_editor_absoluteX="50dp"
+        tools:layout_editor_absoluteY="87dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
