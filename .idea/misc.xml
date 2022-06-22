@@ -3,9 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Repository/Project4423/app/src/main/res/drawable/attack_effect_mychar.xml" value="0.1385" />
+        <entry key="..\:/Repository/Project4423/app/src/main/res/drawable/mychar.xml" value="0.1385" />
         <entry key="..\:/Repository/Project4423/app/src/main/res/drawable/test.xml" value="0.1385" />
         <entry key="..\:/Repository/Project4423/app/src/main/res/drawable/test_square.xml" value="0.1385" />
-        <entry key="..\:/Repository/Project4423/app/src/main/res/layout/activity_main.xml" value="0.275" />
+        <entry key="..\:/Repository/Project4423/app/src/main/res/layout/activity_main.xml" value="0.264" />
       </map>
     </option>
   </component>

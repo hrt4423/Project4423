@@ -14,7 +14,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);//画面に表示すべきビューを設定する。
 
 
-
 //findViewByIdでactivity_mainで設定したidからviewを探す。
         sq = findViewById(R.id.sq);
 
