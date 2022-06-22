@@ -18,7 +18,7 @@
 
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/enemy_mob3"
         android:layout_width="65dp"
         android:layout_height="59dp"
         app:srcCompat="@drawable/enemy_mob3"
@@ -26,7 +26,7 @@
         tools:layout_editor_absoluteY="54dp" />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/mychar"
         android:layout_width="61dp"
         android:layout_height="74dp"
         app:srcCompat="@drawable/mychar"
@@ -34,7 +34,7 @@
         tools:layout_editor_absoluteY="564dp" />
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/attack_effect_enemy"
         android:layout_width="30dp"
         android:layout_height="30dp"
         app:srcCompat="@drawable/attack_effect_enemy"
@@ -42,7 +42,7 @@
         tools:layout_editor_absoluteY="120dp" />
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/attack_effect_mychar"
         android:layout_width="19dp"
         android:layout_height="21dp"
         app:srcCompat="@drawable/attack_effect_mychar"
