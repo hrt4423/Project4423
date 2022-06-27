@@ -7,7 +7,8 @@ import android.widget.ImageView;
 
 public class MainActivity extends AppCompatActivity {
     //ImageViewクラスの変数
-    private ImageView sq;
+    private ImageView myChar;
+    private ImageView enemy;
     @Override
     protected void onCreate(Bundle savedInstanceState) {//引数：アプリの状態情報
         super.onCreate(savedInstanceState);//親クラスのメソッドを呼び出しておく。
@@ -15,10 +16,12 @@ public class MainActivity extends AppCompatActivity {
 
 
 //findViewByIdでactivity_mainで設定したidからviewを探す。
-        sq = findViewById(R.id.sq);
+        myChar = findViewById(R.id.mychar);
+        enemy = findViewById(R.id.enemy_mob3);
 
 //setX setY メソッドで座標を設定
-        sq.setX(100.0f);
-        sq.setY(100.0f);
+        myChar.setX(400.0f);
+        myChar.setY(400.0f);
     }
 }
+
