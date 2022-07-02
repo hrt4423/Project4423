@@ -49,6 +49,7 @@
         tools:layout_editor_absoluteX="196dp"
         tools:layout_editor_absoluteY="523dp" />
 
+    <!--
     <view
         android:id="@+id/ss"
         class="io.github.hrt4423.project4423.SimpleSurface"
@@ -59,6 +60,6 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
+      -->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
