@@ -1,65 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:orientation="vertical"
+    tools:ignore="RtlHardcoded, RtlSymmetry, ContentDescription">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/hello_world"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <FrameLayout
+        android:id="@+id/frame"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/hello_world"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
 
-    <ImageView
-        android:id="@+id/enemy_mob3"
-        android:layout_width="65dp"
-        android:layout_height="59dp"
-        app:srcCompat="@drawable/enemy_mob3"
-        tools:layout_editor_absoluteX="173dp"
-        tools:layout_editor_absoluteY="50dp" />
+        <ImageView
+            android:id="@+id/enemy_mob3"
+            android:layout_width="65dp"
+            android:layout_height="59dp"
+            app:srcCompat="@drawable/enemy_mob3"
+            tools:layout_editor_absoluteX="173dp"
+            tools:layout_editor_absoluteY="50dp" />
 
-    <ImageView
-        android:id="@+id/mychar"
-        android:layout_width="61dp"
-        android:layout_height="74dp"
-        app:srcCompat="@drawable/mychar"
-        tools:layout_editor_absoluteX="175dp"
-        tools:layout_editor_absoluteY="559dp" />
+        <ImageView
+            android:id="@+id/mychar"
+            android:layout_width="61dp"
+            android:layout_height="74dp"
+            app:srcCompat="@drawable/mychar"
+            tools:layout_editor_absoluteX="175dp"
+            tools:layout_editor_absoluteY="559dp" />
 
-    <ImageView
-        android:id="@+id/attack_effect_enemy"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        app:srcCompat="@drawable/attack_effect_enemy"
-        tools:layout_editor_absoluteX="185dp"
-        tools:layout_editor_absoluteY="120dp" />
+        <ImageView
+            android:id="@+id/attack_effect_enemy"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            app:srcCompat="@drawable/attack_effect_enemy"
+            tools:layout_editor_absoluteX="185dp"
+            tools:layout_editor_absoluteY="120dp" />
 
-    <ImageView
-        android:id="@+id/attack_effect_mychar"
-        android:layout_width="19dp"
-        android:layout_height="21dp"
-        app:srcCompat="@drawable/attack_effect_mychar"
-        tools:layout_editor_absoluteX="196dp"
-        tools:layout_editor_absoluteY="523dp" />
+        <ImageView
+            android:id="@+id/attack_effect_mychar"
+            android:layout_width="19dp"
+            android:layout_height="21dp"
+            app:srcCompat="@drawable/attack_effect_mychar"
+            tools:layout_editor_absoluteX="196dp"
+            tools:layout_editor_absoluteY="523dp" />
 
-    <!--
-    <view
-        android:id="@+id/ss"
-        class="io.github.hrt4423.project4423.SimpleSurface"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-      -->
+        <!--
+        <view
+            android:id="@+id/ss"
+            class="io.github.hrt4423.project4423.SimpleSurface"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+          -->
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </FrameLayout>
+</LinearLayout>
