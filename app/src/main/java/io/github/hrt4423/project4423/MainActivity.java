@@ -2,6 +2,7 @@ package io.github.hrt4423.project4423;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.graphics.Point;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.MotionEvent;
@@ -22,6 +23,14 @@ public class MainActivity extends AppCompatActivity {
     private TextView startLabel;
     private boolean start_flg;
 
+    private  int frameHeight;
+    private  int frameWidth;
+    private  int screenWidth;
+
+    private  int myCharSpeed;
+    private  float myCharX;
+    private int myCharSize;
+
     private  boolean action_flg = false;
 
     private Timer timer = new Timer();
@@ -40,10 +49,13 @@ public class MainActivity extends AppCompatActivity {
         mc_bullet = findViewById(R.id.attack_effect_mychar);
         startLabel = findViewById(R.id.startLabel);
 
-
+        //画面の横幅の取得
+        Point size = new Point();
+        screenWidth = size.x;
+        //スピードの値の設定
+        myCharSpeed = Math.round(screenWidth / 60f);
 
         //setX setY メソッドで座標を設定
-
         enemy.setX(450.0f);
         enemy.setY(250.0f);
         e_bullet.setX(500.0f);
@@ -62,13 +74,19 @@ public class MainActivity extends AppCompatActivity {
         if(!start_flg){
             start_flg = true;
 
-            /*レイアウトの高さを取得
+            //レイアウトの高さを取得
             FrameLayout frame = findViewById(R.id.frame);
             frameHeight = frame.getHeight();
+            frameWidth  = frame.getWidth();
 
-            boxY = box.getY();
+
+            myCharX = myChar.getX();
+            myCharSpeed = myChar.getWidth();
+            /*当たり判定のため
             boxSize = box.getHeight();
             */
+
+
 
             startLabel.setVisibility(View.GONE);
 
@@ -98,6 +116,25 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void changePos(){
+        hitCheck();
+
+
+        //MyChar
+        if (action_flg) {
+            myCharX -= myCharSpeed;
+        } else {
+            myCharX += myCharSpeed;
+        }
+        //frameの中にいるかの判定
+        if (myCharX < 0) myCharX = 0;
+
+        if (myCharX > frameWidth - myCharSize) myCharX = frameWidth - myCharX;
+
+        myChar.setX(myCharX);
+
+
+
+
 
     }
 
