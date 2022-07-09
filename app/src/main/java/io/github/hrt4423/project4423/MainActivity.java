@@ -121,9 +121,9 @@ public class MainActivity extends AppCompatActivity {
 
         //MyChar
         if (action_flg) {
-            myCharX -= myCharSpeed;
+            myCharX -= myCharSpeed/10;
         } else {
-            myCharX += myCharSpeed;
+            myCharX += myCharSpeed/10;
         }
         //frameの中にいるかの判定
         if (myCharX < 0) myCharX = 0;
