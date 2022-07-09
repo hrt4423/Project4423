@@ -82,9 +82,9 @@ public class MainActivity extends AppCompatActivity {
 
             myCharX = myChar.getX();
             myCharSpeed = myChar.getWidth();
-            /*当たり判定のため
-            boxSize = box.getHeight();
-            */
+
+            myCharSize = myChar.getWidth();
+
 
 
 
@@ -128,7 +128,7 @@ public class MainActivity extends AppCompatActivity {
         //frameの中にいるかの判定
         if (myCharX < 0) myCharX = 0;
 
-        if (myCharX > frameWidth - myCharSize) myCharX = frameWidth - myCharX;
+        if (myCharX > frameWidth - myCharSize) myCharX = frameWidth - myCharSize;
 
         myChar.setX(myCharX);
 
