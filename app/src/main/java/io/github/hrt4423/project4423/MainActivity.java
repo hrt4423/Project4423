@@ -5,8 +5,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.graphics.Point;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.Display;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -31,6 +33,10 @@ public class MainActivity extends AppCompatActivity {
     private  float myCharX;
     private int myCharSize;
 
+    private int enemySpeed;
+    private float enemyX, enemyY;
+    private int enemySize;
+
     private  boolean action_flg = false;
 
     private Timer timer = new Timer();
@@ -50,10 +56,16 @@ public class MainActivity extends AppCompatActivity {
         startLabel = findViewById(R.id.startLabel);
 
         //画面の横幅の取得
+        WindowManager wm = getWindowManager();
+        Display display = wm.getDefaultDisplay(); //画面のサイズの取得
         Point size = new Point();
+        display.getSize(size);
         screenWidth = size.x;
-        //スピードの値の設定
+
+
+        //スピードの設定
         myCharSpeed = Math.round(screenWidth / 60f);
+        enemySpeed = Math.round(screenWidth/ 60f);
 
         //setX setY メソッドで座標を設定
         enemy.setX(450.0f);
@@ -79,13 +91,13 @@ public class MainActivity extends AppCompatActivity {
             frameHeight = frame.getHeight();
             frameWidth  = frame.getWidth();
 
-
+            //myChar座標の取得
             myCharX = myChar.getX();
-            myCharSpeed = myChar.getWidth();
-
+            //myCharサイズの取得
             myCharSize = myChar.getWidth();
-
-
+            //enemy座標の取得
+            enemyX = enemy.getX();
+            enemySize = enemy.getWidth();
 
 
             startLabel.setVisibility(View.GONE);
@@ -118,12 +130,25 @@ public class MainActivity extends AppCompatActivity {
     public void changePos(){
         hitCheck();
 
+        //Enemy
+        enemyX -= enemySpeed;
+        //画面外に出たときの処理
+        if (enemyX < -enemySize) {
+            enemyX = screenWidth +20;
+            /*Y座標は、0 から frameHeight – orange.getHeight() の範囲のランダムな値。
+            enemyY = (float)Math.floor(Math.random() * (frameHeight - enemy.getHeight()));
+            */
+        }
+        //値の更新
+        enemy.setX(enemyX);
+        //enemy.setY(enemyY);
+
 
         //MyChar
         if (action_flg) {
-            myCharX -= myCharSpeed/10;
+            myCharX -= myCharSpeed;
         } else {
-            myCharX += myCharSpeed/10;
+            myCharX += myCharSpeed;
         }
         //frameの中にいるかの判定
         if (myCharX < 0) myCharX = 0;
@@ -131,10 +156,6 @@ public class MainActivity extends AppCompatActivity {
         if (myCharX > frameWidth - myCharSize) myCharX = frameWidth - myCharSize;
 
         myChar.setX(myCharX);
-
-
-
-
 
     }
 
