@@ -166,7 +166,7 @@ public class MainActivity extends AppCompatActivity {
     //バックボタン無効化
     @Override
     public void onBackPressed() { }
-
+    //ムーミン
 
 
 }
