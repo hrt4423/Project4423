@@ -17,6 +17,8 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity {
+    //変数
+
     //ImageViewクラスの変数
     private ImageView myChar;
     private ImageView enemy;
@@ -29,13 +31,29 @@ public class MainActivity extends AppCompatActivity {
     private  int frameWidth;
     private  int screenWidth;
 
+    //自キャラ
     private  int myCharSpeed;
     private  float myCharX;
     private int myCharSize;
 
+    //敵キャラ
     private int enemySpeed;
     private float enemyX, enemyY;
     private int enemySize;
+
+    //弾　自キャラ
+    private int mc_bulletSpeed;
+    private float mc_bulletX, mc_bulletY;
+    private int mc_bulletSize;
+
+    //弾　敵キャラ
+    private  int e_bulletSpeed;
+    private float e_bulletX, e_bulletY;
+    private int e_bulletSize;
+
+    //自キャラと弾のずれ補正値
+    private int mcBCorrection = 56;
+
 
     private  boolean action_flg = false;
 
@@ -66,17 +84,32 @@ public class MainActivity extends AppCompatActivity {
         //スピードの設定
         myCharSpeed = Math.round(screenWidth / 60f);
         enemySpeed = Math.round(screenWidth/ 60f);
+        mc_bulletSpeed = Math.round(screenWidth / 60f);
+        e_bulletSpeed = Math.round(screenWidth / 60f);
 
         //setX setY メソッドで座標を設定
         enemy.setX(450.0f);
         enemy.setY(250.0f);
-        e_bullet.setX(500.0f);
-        e_bullet.setY(400.0f);
+        e_bullet.setX(497.0f); //enemyX + 47
+        e_bullet.setY(400.0f); //enemyY + 150
+        /*
+        e_bullet.setX(-70.0f);
+        e_bullet.setY(-70.0f);
+        */
+
 
         myChar.setX(450.0f);
         myChar.setY(1500.0f);
-        mc_bullet.setX(500.0f);
+        mc_bullet.setX(506.0f); //myCharX + 56
         mc_bullet.setY(1500.0f);
+        /*
+        mc_bullet.setX(-70.0f);
+        mc_bullet.setY(-70.0f);
+        */
+
+        //弾を非表示
+        //mc_bullet.setVisibility(View.GONE);
+        //e_bullet.setVisibility(View.GONE);
 
     }
 
@@ -95,9 +128,20 @@ public class MainActivity extends AppCompatActivity {
             myCharX = myChar.getX();
             //myCharサイズの取得
             myCharSize = myChar.getWidth();
+
             //enemy座標の取得
             enemyX = enemy.getX();
             enemySize = enemy.getWidth();
+
+            //弾　座標
+            mc_bulletX = mc_bullet.getX();
+            mc_bulletY = mc_bullet.getY();
+            e_bulletX = e_bullet.getX();
+            e_bulletY = e_bullet.getY();
+
+            //弾　サイズ
+            mc_bulletSize = mc_bullet.getHeight();
+            e_bulletSize = e_bullet.getHeight();
 
 
             startLabel.setVisibility(View.GONE);
@@ -130,21 +174,16 @@ public class MainActivity extends AppCompatActivity {
     public void changePos(){
         hitCheck();
 
-        //Enemy 変化量を決めてる
+        //Enemy
         enemyX -= enemySpeed;
-
         //画面外に出たときの処理
         if (enemyX < -enemySize) {
             enemyX = screenWidth  + 20;
-            /*Y座標は、0 から frameHeight – orange.getHeight() の範囲のランダムな値。
-            enemyY = (float)Math.floor(Math.random() * (frameHeight - enemy.getHeight()));
-            */
         }
 
         //値の更新
         enemy.setX(enemyX);
         //enemy.setY(enemyY);
-
 
         //MyChar
         if (action_flg) {
@@ -158,6 +197,20 @@ public class MainActivity extends AppCompatActivity {
         if (myCharX > frameWidth - myCharSize) myCharX = frameWidth - myCharSize;
 
         myChar.setX(myCharX);
+
+        //myChar bullet
+        mc_bulletY -= mc_bulletSpeed;
+        mc_bulletX = myCharX + mcBCorrection;
+
+        if(mc_bulletY < 0){
+            mc_bulletY = myChar.getY();
+            mc_bulletX = myCharX + mcBCorrection;
+
+            mc_bullet.setX(mc_bulletX);
+        }else{
+            mc_bulletY -= mc_bulletSpeed;
+        }
+        mc_bullet.setY(mc_bulletY);
 
     }
 
