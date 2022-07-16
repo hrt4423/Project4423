@@ -169,7 +169,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() { }
 
-
+    //これは平田の作業だ。
 
 }
 
