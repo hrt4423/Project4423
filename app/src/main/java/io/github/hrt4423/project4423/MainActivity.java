@@ -53,7 +53,8 @@ public class MainActivity extends AppCompatActivity {
 
     //自キャラと弾のずれ補正値
     private int mcBCorrection = 56;
-
+    private int eBCorrectionX = 47;
+    private int eBCorrectionY = 150;
 
     private  boolean action_flg = false;
 
@@ -84,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
         //スピードの設定
         myCharSpeed = Math.round(screenWidth / 60f);
         enemySpeed = Math.round(screenWidth/ 60f);
-        mc_bulletSpeed = Math.round(screenWidth / 60f);
+        mc_bulletSpeed = Math.round(screenWidth / 20f);
         e_bulletSpeed = Math.round(screenWidth / 60f);
 
         //setX setY メソッドで座標を設定
@@ -198,10 +199,7 @@ public class MainActivity extends AppCompatActivity {
 
         myChar.setX(myCharX);
 
-        //myChar bullet
-        mc_bulletY -= mc_bulletSpeed;
-        mc_bulletX = myCharX + mcBCorrection;
-
+        //自キャラの弾
         if(mc_bulletY < 0){
             mc_bulletY = myChar.getY();
             mc_bulletX = myCharX + mcBCorrection;
@@ -211,6 +209,17 @@ public class MainActivity extends AppCompatActivity {
             mc_bulletY -= mc_bulletSpeed;
         }
         mc_bullet.setY(mc_bulletY);
+
+        //敵キャラの弾
+        if(e_bulletY > frameHeight){
+            e_bulletY = enemy.getY() + eBCorrectionY;
+            e_bulletX = enemyX + eBCorrectionX;
+
+            e_bullet.setX(e_bulletX);
+        }else{
+            e_bulletY += e_bulletSpeed;
+        }
+        e_bullet.setY(e_bulletY);
 
     }
 
