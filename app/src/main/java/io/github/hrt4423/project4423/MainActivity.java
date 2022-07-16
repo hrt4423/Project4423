@@ -130,15 +130,17 @@ public class MainActivity extends AppCompatActivity {
     public void changePos(){
         hitCheck();
 
-        //Enemy
+        //Enemy 変化量を決めてる
         enemyX -= enemySpeed;
+
         //画面外に出たときの処理
         if (enemyX < -enemySize) {
-            enemyX = screenWidth +20;
+            enemyX = screenWidth  + 20;
             /*Y座標は、0 から frameHeight – orange.getHeight() の範囲のランダムな値。
             enemyY = (float)Math.floor(Math.random() * (frameHeight - enemy.getHeight()));
             */
         }
+
         //値の更新
         enemy.setX(enemyX);
         //enemy.setY(enemyY);
