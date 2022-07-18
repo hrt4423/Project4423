@@ -3,7 +3,7 @@ package io.github.hrt4423.project4423;
 import android.media.Image;
 import android.widget.ImageView;
 
-public class Bullet {
+public class EnemyBullet {
     private int fHeight, sWidth;
 
     private ImageView bullet;
@@ -17,7 +17,7 @@ public class Bullet {
     private int eBCorrectionX = 47;
     private int eBCorrectionY = 150;
 
-    Bullet(int fHeight, int sWidth){
+    EnemyBullet(int fHeight, int sWidth){
         this.fHeight = fHeight;
         this.sWidth = sWidth;
         this.bulletSpeed = Math.round(sWidth/60f);

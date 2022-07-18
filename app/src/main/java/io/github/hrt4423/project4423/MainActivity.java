@@ -177,7 +177,7 @@ public class MainActivity extends AppCompatActivity {
         enemy1.setEnemyInfo(enemy);
         enemy1.eMotion();
 
-        Bullet eBullet = new Bullet(frameHeight, screenWidth);
+        EnemyBullet eBullet = new EnemyBullet(frameHeight, screenWidth);
         eBullet.setBulletInfo(e_bullet, enemy);
         eBullet.bMotion();
 
