@@ -9,3 +9,4 @@ public class Enemy {
 class enemy2{
     private int enemy2X;
 }
+//hirata2ブランチです。
