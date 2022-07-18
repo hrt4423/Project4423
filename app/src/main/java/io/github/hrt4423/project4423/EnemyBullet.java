@@ -1,6 +1,5 @@
 package io.github.hrt4423.project4423;
 
-import android.media.Image;
 import android.widget.ImageView;
 
 public class EnemyBullet {
