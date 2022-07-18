@@ -179,7 +179,6 @@ public class MainActivity extends AppCompatActivity {
         enemy1.setEnemyInfo(enemy);
         enemy1.eMotion();
 
-
         /*
         //Enemy
         enemyX -= enemySpeed;
