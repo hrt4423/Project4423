@@ -112,6 +112,7 @@ public class MainActivity extends AppCompatActivity {
         //mc_bullet.setVisibility(View.GONE);
         //e_bullet.setVisibility(View.GONE);
 
+
     }
 
 
@@ -130,9 +131,6 @@ public class MainActivity extends AppCompatActivity {
             //myCharサイズの取得
             myCharSize = myChar.getWidth();
 
-            //enemy座標の取得
-            enemyX = enemy.getX();
-            enemySize = enemy.getWidth();
 
             //弾　座標
             mc_bulletX = mc_bullet.getX();
@@ -143,7 +141,6 @@ public class MainActivity extends AppCompatActivity {
             //弾　サイズ
             mc_bulletSize = mc_bullet.getHeight();
             e_bulletSize = e_bullet.getHeight();
-
 
             startLabel.setVisibility(View.GONE);
 
@@ -170,6 +167,7 @@ public class MainActivity extends AppCompatActivity {
             }
         }
         return true;
+
     }
 
     public void changePos(){
@@ -179,19 +177,9 @@ public class MainActivity extends AppCompatActivity {
         enemy1.setEnemyInfo(enemy);
         enemy1.eMotion();
 
-        /*
-        //Enemy
-        enemyX -= enemySpeed;
-        //画面外に出たときの処理
-        if (enemyX < -enemySize) {
-            enemyX = screenWidth  + 20;
-        }
-
-        //値の更新
-        enemy.setX(enemyX);
-        //enemy.setY(enemyY);
-
-         */
+        Bullet eBullet = new Bullet(frameHeight, screenWidth);
+        eBullet.setBulletInfo(e_bullet, enemy);
+        eBullet.bMotion();
 
         //MyChar
         if (action_flg) {
@@ -206,6 +194,7 @@ public class MainActivity extends AppCompatActivity {
 
         myChar.setX(myCharX);
 
+
         //自キャラの弾
         if(mc_bulletY < 0){
             mc_bulletY = myChar.getY();
@@ -216,20 +205,6 @@ public class MainActivity extends AppCompatActivity {
             mc_bulletY -= mc_bulletSpeed;
         }
         mc_bullet.setY(mc_bulletY);
-
-        /*
-        //敵キャラの弾
-        if(e_bulletY > frameHeight){
-            e_bulletY = enemy.getY() + eBCorrectionY;
-            e_bulletX = enemyX + eBCorrectionX;
-
-            e_bullet.setX(e_bulletX);
-        }else{
-            e_bulletY += e_bulletSpeed;
-        }
-        e_bullet.setY(e_bulletY);
-
-         */
 
     }
 

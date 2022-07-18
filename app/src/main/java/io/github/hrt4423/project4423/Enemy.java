@@ -1,6 +1,5 @@
 package io.github.hrt4423.project4423;
 
-
 import android.widget.ImageView;
 
 public class Enemy {
@@ -11,18 +10,9 @@ public class Enemy {
     private float enemyX, enemyY;
     private int enemySize;
 
-    /*弾
-    private  int e_bulletSpeed;
-    private float e_bulletX, e_bulletY;
-    private int e_bulletSize;
-
-    private int eBCorrectionX = 47;
-    private int eBCorrectionY = 150;
-     */
-
     Enemy(int sWidth){
         this.sWidth = sWidth;
-        this.enemySpeed = Math.round(sWidth/ 60f);
+        this.enemySpeed = Math.round(sWidth/60f);
     }
 
     public void setEnemyInfo(ImageView enemy){
