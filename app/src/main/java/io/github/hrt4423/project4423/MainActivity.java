@@ -175,6 +175,12 @@ public class MainActivity extends AppCompatActivity {
     public void changePos(){
         hitCheck();
 
+        Enemy enemy1 = new Enemy(screenWidth);
+        enemy1.setEnemyInfo(enemy);
+        enemy1.eMotion();
+
+
+        /*
         //Enemy
         enemyX -= enemySpeed;
         //画面外に出たときの処理
@@ -185,6 +191,8 @@ public class MainActivity extends AppCompatActivity {
         //値の更新
         enemy.setX(enemyX);
         //enemy.setY(enemyY);
+
+         */
 
         //MyChar
         if (action_flg) {
@@ -210,6 +218,7 @@ public class MainActivity extends AppCompatActivity {
         }
         mc_bullet.setY(mc_bulletY);
 
+        /*
         //敵キャラの弾
         if(e_bulletY > frameHeight){
             e_bulletY = enemy.getY() + eBCorrectionY;
@@ -220,6 +229,8 @@ public class MainActivity extends AppCompatActivity {
             e_bulletY += e_bulletSpeed;
         }
         e_bullet.setY(e_bulletY);
+
+         */
 
     }
 
