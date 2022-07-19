@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
 
     //自キャラ
     private  int myCharSpeed;
-    private  float myCharX;
+    private  float myCharX, myCharY;
     private int myCharSize;
 
     //敵キャラ
@@ -128,6 +128,7 @@ public class MainActivity extends AppCompatActivity {
 
             //myChar座標の取得
             myCharX = myChar.getX();
+            myCharY = myChar.getY();
             //myCharサイズの取得
             myCharSize = myChar.getWidth();
 
@@ -209,7 +210,23 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void hitCheck(){
+        //敵　弾
+        float eBulletCenterX = e_bulletX + e_bullet.getWidth() / 2.0f;
+        float eBulletCenterY = e_bulletY + e_bullet.getHeight() / 2.0f;
 
+        if(hitStatus(eBulletCenterX, eBulletCenterY)){
+            // Game Over!
+            if (timer != null) {
+                timer.cancel();
+                timer = null;
+                //soundPlayer.playOverSound();
+            }
+        }
+    }
+
+    public boolean hitStatus(float centerX, float centerY){
+        return (0 <= centerX && centerX <= myCharSize &&
+                myCharY <= centerY && centerY <= myCharY + myCharSize) ;
     }
 
     //バックボタン無効化
