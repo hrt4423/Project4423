@@ -28,20 +28,27 @@ public class Enemy {
     public void setEnemyInfo(ImageView enemy){
         this.enemy = enemy;
         this.enemyX = enemy.getX();
+        this.enemyY = enemy.getY();
         this.enemySize = enemy.getWidth();
     }
 
     public void eMotion(){
         //Enemy 変化量を決めてる
         enemyX -= enemySpeed;
-
+        enemyY -= 20;
         //画面外に出たときの処理
         if (enemyX < -enemySize) {
             enemyX = sWidth  + 20;
-        }
+
+        }else if(enemyX > sWidth +20){
+            enemyX = -20;
+
+        }else if()
 
         //値の更新
         enemy.setX(enemyX);
+        enemy.setY(enemyY);
+
     }
 }
 
