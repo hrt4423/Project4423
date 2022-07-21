@@ -2,8 +2,11 @@ package io.github.hrt4423.project4423;
 
 
 import android.widget.ImageView;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class Enemy {
+    Timer timer = new Timer();
     private int sWidth;
 
     private ImageView enemy;
@@ -34,8 +37,22 @@ public class Enemy {
 
     public void eMotion(){
         //Enemy 変化量を決めてる
-        enemyX -= enemySpeed;
-        enemyY -= 20;
+        //enemyX -= enemySpeed;
+        //enemyY -= 20;
+
+        if(enemyX > sWidth - 200){
+           TimerTask aiueo = new TimerTask() {
+               public void run() {
+                   enemyX -= enemySpeed;
+                   enemy.setX(enemyX);
+               }
+           };
+        }else{
+            enemyX += enemySpeed;
+        }
+
+
+
         //画面外に出たときの処理
         if (enemyX < -enemySize) {
             enemyX = sWidth  + 20;
@@ -43,13 +60,16 @@ public class Enemy {
         }else if(enemyX > sWidth +20){
             enemyX = -20;
 
-        }else if()
+        }
 
         //値の更新
         enemy.setX(enemyX);
-        enemy.setY(enemyY);
-
+        //enemy.setY(enemyY);
+        timer.schedule(aiueo,3000);
     }
+
+
+
 }
 
 
