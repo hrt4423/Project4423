@@ -47,19 +47,6 @@ public class Enemy {
         //値の更新
         enemy.setX(enemyX);
 
-        /*
-        //Enemy 変化量を決めてる
-        enemyX -= enemySpeed;
-
-        //画面外に出たときの処理
-        if (enemyX < -enemySize) {
-            enemyX = sWidth  + 20;
-        }
-
-        //値の更新
-        enemy.setX(enemyX);
-
-         */
     }
 }
 
