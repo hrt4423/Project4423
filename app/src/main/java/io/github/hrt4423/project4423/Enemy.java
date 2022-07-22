@@ -9,7 +9,7 @@ public class Enemy {
     private int enemySpeed;
     private float enemyX, enemyY;
     private int enemySize;
-    private boolean motionFlg = false;//true:右, false:左
+    private boolean motionFlg = true;//true:右, false:左
 
     Enemy(int sWidth){
         this.sWidth = sWidth;
@@ -23,6 +23,7 @@ public class Enemy {
     }
 
     public void eMotion(){
+        //動く向き
         if(motionFlg){
             //右
             enemyX += enemySpeed;
@@ -31,16 +32,18 @@ public class Enemy {
             enemyX -= enemySpeed;
         }
 
+        //画面外の時の処理
         if (enemyX < 0){
             enemyX = 1;
             motionFlg = true;
         }
-
+        //画面外のときの処理
         if (enemyX > sWidth - enemySize) {
             enemyX = sWidth - enemySize;
             motionFlg = false;
         }
 
+        //値の更新
         enemy.setX(enemyX);
 
         /*
