@@ -9,7 +9,8 @@ public class Enemy {
     private int enemySpeed;
     private float enemyX, enemyY;
     private int enemySize;
-    private boolean motionFlg = true;//true:右, false:左
+    //staticでないと機能しない。
+    private static boolean motionFlg = true;//true:右, false:左
 
     Enemy(int sWidth){
         this.sWidth = sWidth;
