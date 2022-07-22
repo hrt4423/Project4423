@@ -25,11 +25,14 @@ public class MainActivity extends AppCompatActivity {
     private ImageView e_bullet;
     private ImageView mc_bullet;
     private TextView startLabel;
+    private TextView scoreLabel;
     private boolean start_flg;
 
     private  int frameHeight;
     private  int frameWidth;
     private  int screenWidth;
+
+    private int score = 0;
 
     //自キャラ
     private  int myCharSpeed;
@@ -73,6 +76,8 @@ public class MainActivity extends AppCompatActivity {
         e_bullet = findViewById(R.id.attack_effect_enemy);
         mc_bullet = findViewById(R.id.attack_effect_mychar);
         startLabel = findViewById(R.id.startLabel);
+        scoreLabel = findViewById(R.id.scoreLabel);
+
 
         //画面の横幅の取得
         WindowManager wm = getWindowManager();
@@ -112,6 +117,7 @@ public class MainActivity extends AppCompatActivity {
         //mc_bullet.setVisibility(View.GONE);
         //e_bullet.setVisibility(View.GONE);
 
+        scoreLabel.setText(getString(R.string.score, 0));
 
     }
 
@@ -169,7 +175,9 @@ public class MainActivity extends AppCompatActivity {
         }
         return true;
 
+
     }
+
 
     public void changePos(){
         hitCheck();
@@ -207,6 +215,9 @@ public class MainActivity extends AppCompatActivity {
         }
         mc_bullet.setY(mc_bulletY);
 
+        //スコアの更新
+        scoreLabel.setText(getString(R.string.score, score));
+
     }
 
     public void hitCheck(){
@@ -215,6 +226,7 @@ public class MainActivity extends AppCompatActivity {
         float eBulletCenterY = e_bulletY + e_bullet.getHeight() / 2.0f;
 
         if(hitStatus(eBulletCenterX, eBulletCenterY)){
+            score += 10;
             // Game Over!
             if (timer != null) {
                 timer.cancel();
@@ -226,7 +238,7 @@ public class MainActivity extends AppCompatActivity {
 
     public boolean hitStatus(float centerX, float centerY){
         return (0 <= centerX && centerX <= myCharSize &&
-                myCharY <= centerY && centerY <= myCharY + myCharSize) ;
+                myCharY <= centerY && centerY <= myCharY + myCharSize);
     }
 
     //バックボタン無効化
