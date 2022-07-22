@@ -6,9 +6,8 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class Enemy {
-    Timer timer = new Timer();
     private int sWidth;
-
+    private boolean decision = true;
     private ImageView enemy;
     private int enemySpeed;
     private float enemyX, enemyY;
@@ -40,15 +39,19 @@ public class Enemy {
         //enemyX -= enemySpeed;
         //enemyY -= 20;
 
-        if(enemyX > sWidth - 200){
-           TimerTask aiueo = new TimerTask() {
-               public void run() {
-                   enemyX -= enemySpeed;
-                   enemy.setX(enemyX);
-               }
-           };
-        }else{
+
+
+
+        if(decision == true){
             enemyX += enemySpeed;
+        }else{
+            enemyX -= enemySpeed;
+        }
+
+        if(enemyX > 700){
+            decision = false;
+        }else{
+            decision = true;
         }
 
 
@@ -65,7 +68,7 @@ public class Enemy {
         //値の更新
         enemy.setX(enemyX);
         //enemy.setY(enemyY);
-        timer.schedule(aiueo,3000);
+
     }
 
 
