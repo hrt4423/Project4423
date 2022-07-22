@@ -9,6 +9,7 @@ public class Enemy {
     private int enemySpeed;
     private float enemyX, enemyY;
     private int enemySize;
+    private boolean motionFlg;//true:右, false:左
 
     Enemy(int sWidth){
         this.sWidth = sWidth;
@@ -22,6 +23,14 @@ public class Enemy {
     }
 
     public void eMotion(){
+        if(motionFlg){
+            //右
+
+        }else{
+            //左
+        }
+
+        /*
         //Enemy 変化量を決めてる
         enemyX -= enemySpeed;
 
@@ -32,6 +41,8 @@ public class Enemy {
 
         //値の更新
         enemy.setX(enemyX);
+
+         */
     }
 }
 
