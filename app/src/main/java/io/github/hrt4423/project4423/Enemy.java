@@ -7,25 +7,23 @@ import java.util.TimerTask;
 
 public class Enemy {
     private int sWidth;
-    private boolean decision = true;
+    private int fHeight;
+    private static boolean motionFlg = true;//true:右, false:左
     private ImageView enemy;
     private int enemySpeed;
     private float enemyX, enemyY;
     private int enemySize;
 
-    /*弾
-    private  int e_bulletSpeed;
-    private float e_bulletX, e_bulletY;
-    private int e_bulletSize;
 
-    private int eBCorrectionX = 47;
-    private int eBCorrectionY = 150;
-     */
 
     Enemy(int sWidth){
         this.sWidth = sWidth;
         this.enemySpeed = Math.round(sWidth/ 60f);
     }
+
+
+
+
 
     public void setEnemyInfo(ImageView enemy){
         this.enemy = enemy;
@@ -35,23 +33,24 @@ public class Enemy {
     }
 
     public void eMotion(){
-        //Enemy 変化量を決めてる
-        //enemyX -= enemySpeed;
-        //enemyY -= 20;
-
-
-
-
-        if(decision == true){
+        enemyY+=5;
+        if(motionFlg){
+            //右
             enemyX += enemySpeed;
         }else{
+            //左
             enemyX -= enemySpeed;
         }
 
-        if(enemyX > 700){
-            decision = false;
-        }else{
-            decision = true;
+        //画面外の時の処理
+        if (enemyX < 0){
+            enemyX = 1;
+            motionFlg = true;
+        }
+        //画面外のときの処理
+        if (enemyX > sWidth - enemySize) {
+            enemyX = sWidth - enemySize;
+            motionFlg = false;
         }
 
 
@@ -65,14 +64,19 @@ public class Enemy {
 
         }
 
+
+
         //値の更新
         enemy.setX(enemyX);
-        //enemy.setY(enemyY);
+        enemy.setY(enemyY);
 
     }
 
 
-
 }
+
+
+
+
 
 
