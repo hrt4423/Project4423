@@ -16,8 +16,9 @@ public class Enemy {
 
 
 
-    Enemy(int sWidth){
+    Enemy(int sWidth,int frameHeight){
         this.sWidth = sWidth;
+        this.frameHeight;
         this.enemySpeed = Math.round(sWidth/ 60f);
     }
 
