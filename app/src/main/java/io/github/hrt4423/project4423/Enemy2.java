@@ -1,27 +1,12 @@
 package io.github.hrt4423.project4423;
 
 import android.widget.ImageView;
-import java.util.Timer;
-import java.util.TimerTask;
 
-public class Enemy {
-    public int sWidth;
-    public int fHeight;
-    public static boolean motionFlg = true;//true:右, false:左
-    public ImageView enemy;
-    public int enemySpeed;
-    public float enemyX, enemyY;
-    public int enemySize;
-    //staticでないと機能しない。
+public class Enemy2 extends Enemy {
 
-    Enemy(int sWidth, int frameHeight) {
-        this.sWidth = sWidth;
-        this.fHeight = frameHeight;
-        this.enemySpeed = Math.round(sWidth / 60f);
+    Enemy2(int sWidth, int frameHeight){
+        super(sWidth,frameHeight);
     }
-
-
-
 
 
     public void setEnemyInfo(ImageView enemy){
@@ -30,9 +15,7 @@ public class Enemy {
         this.enemyY = enemy.getY();
         this.enemySize = enemy.getWidth();
     }
-
     public void eMotion(){
-
         enemyY += 5;
         //動く向き
 
@@ -73,15 +56,5 @@ public class Enemy {
         enemy.setX(enemyX);
 
         enemy.setY(enemyY);
-
-
     }
-
-
 }
-
-
-
-
-
-
