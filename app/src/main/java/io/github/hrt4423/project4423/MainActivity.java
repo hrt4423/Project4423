@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
     //自キャラ
     private  int myCharSpeed;
     private  float myCharX, myCharY;
-    private int myCharSize;
+    private int myCharWidth, myCharHeight;
 
     //敵キャラ
     private int enemySpeed;
@@ -136,7 +136,8 @@ public class MainActivity extends AppCompatActivity {
             myCharX = myChar.getX();
             myCharY = myChar.getY();
             //myCharサイズの取得
-            myCharSize = myChar.getWidth();
+            myCharWidth = myChar.getWidth();
+            myCharHeight = myChar.getHeight();
 
 
             //弾　座標
@@ -199,7 +200,7 @@ public class MainActivity extends AppCompatActivity {
         //frameの中にいるかの判定
         if (myCharX < 0) myCharX = 0;
 
-        if (myCharX > frameWidth - myCharSize) myCharX = frameWidth - myCharSize;
+        if (myCharX > frameWidth - myCharWidth) myCharX = frameWidth - myCharWidth;
 
         myChar.setX(myCharX);
 
@@ -222,10 +223,10 @@ public class MainActivity extends AppCompatActivity {
 
     public void hitCheck(){
         //敵　弾
-        float eBulletCenterX = e_bulletX + e_bullet.getWidth() / 2.0f;
-        float eBulletCenterY = e_bulletY + e_bullet.getHeight() / 2.0f;
+        float eBulletCenterX = e_bullet.getX() + e_bullet.getWidth() / 2.0f;
+        float eBulletCenterY = e_bullet.getY() + e_bullet.getHeight() / 2.0f;
 
-        if(hitStatus(eBulletCenterX, eBulletCenterY)){
+        if(hitStatus(eBulletCenterX, eBulletCenterY)){ //trueならヒット
             score += 10;
             // Game Over!
             if (timer != null) {
@@ -236,9 +237,9 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public boolean hitStatus(float centerX, float centerY){
-        return (0 <= centerX && centerX <= myCharSize &&
-                myCharY <= centerY && centerY <= myCharY + myCharSize);
+    public boolean hitStatus(float ebCenterX, float ebCenterY){ //trueならヒット
+        return (myCharY <= ebCenterY && ebCenterY <= myCharHeight + myCharY &&
+                myCharX <= ebCenterX && ebCenterX <= myCharX + myCharWidth);
     }
 
     //バックボタン無効化
