@@ -25,15 +25,18 @@ public class MainActivity extends AppCompatActivity {
     private ImageView e_bullet;
     private ImageView mc_bullet;
     private TextView startLabel;
+    private TextView scoreLabel;
     private boolean start_flg;
 
     private  int frameHeight;
     private  int frameWidth;
     private  int screenWidth;
 
+    private int score = 0;
+
     //自キャラ
     private  int myCharSpeed;
-    private  float myCharX;
+    private  float myCharX, myCharY;
     private int myCharSize;
 
     //敵キャラ
@@ -73,6 +76,8 @@ public class MainActivity extends AppCompatActivity {
         e_bullet = findViewById(R.id.attack_effect_enemy);
         mc_bullet = findViewById(R.id.attack_effect_mychar);
         startLabel = findViewById(R.id.startLabel);
+        scoreLabel = findViewById(R.id.scoreLabel);
+
 
         //画面の横幅の取得
         WindowManager wm = getWindowManager();
@@ -112,6 +117,8 @@ public class MainActivity extends AppCompatActivity {
         //mc_bullet.setVisibility(View.GONE);
         //e_bullet.setVisibility(View.GONE);
 
+        scoreLabel.setText(getString(R.string.score, 0));
+
     }
 
 
@@ -127,12 +134,10 @@ public class MainActivity extends AppCompatActivity {
 
             //myChar座標の取得
             myCharX = myChar.getX();
+            myCharY = myChar.getY();
             //myCharサイズの取得
             myCharSize = myChar.getWidth();
 
-            //enemy座標の取得
-            enemyX = enemy.getX();
-            enemySize = enemy.getWidth();
 
             //弾　座標
             mc_bulletX = mc_bullet.getX();
@@ -143,7 +148,6 @@ public class MainActivity extends AppCompatActivity {
             //弾　サイズ
             mc_bulletSize = mc_bullet.getHeight();
             e_bulletSize = e_bullet.getHeight();
-
 
             startLabel.setVisibility(View.GONE);
 
@@ -170,7 +174,10 @@ public class MainActivity extends AppCompatActivity {
             }
         }
         return true;
+
+
     }
+
 
     public void changePos(){
         hitCheck();
@@ -179,19 +186,9 @@ public class MainActivity extends AppCompatActivity {
         enemy1.setEnemyInfo(enemy);
         enemy1.eMotion();
 
-        /*
-        //Enemy
-        enemyX -= enemySpeed;
-        //画面外に出たときの処理
-        if (enemyX < -enemySize) {
-            enemyX = screenWidth  + 20;
-        }
-
-        //値の更新
-        enemy.setX(enemyX);
-        //enemy.setY(enemyY);
-
-         */
+        EnemyBullet eBullet = new EnemyBullet(frameHeight, screenWidth);
+        eBullet.setBulletInfo(e_bullet, enemy);
+        eBullet.bMotion();
 
         //MyChar
         if (action_flg) {
@@ -206,6 +203,7 @@ public class MainActivity extends AppCompatActivity {
 
         myChar.setX(myCharX);
 
+
         //自キャラの弾
         if(mc_bulletY < 0){
             mc_bulletY = myChar.getY();
@@ -217,24 +215,30 @@ public class MainActivity extends AppCompatActivity {
         }
         mc_bullet.setY(mc_bulletY);
 
-        /*
-        //敵キャラの弾
-        if(e_bulletY > frameHeight){
-            e_bulletY = enemy.getY() + eBCorrectionY;
-            e_bulletX = enemyX + eBCorrectionX;
-
-            e_bullet.setX(e_bulletX);
-        }else{
-            e_bulletY += e_bulletSpeed;
-        }
-        e_bullet.setY(e_bulletY);
-
-         */
+        //スコアの更新
+        scoreLabel.setText(getString(R.string.score, score));
 
     }
 
     public void hitCheck(){
+        //敵　弾
+        float eBulletCenterX = e_bulletX + e_bullet.getWidth() / 2.0f;
+        float eBulletCenterY = e_bulletY + e_bullet.getHeight() / 2.0f;
 
+        if(hitStatus(eBulletCenterX, eBulletCenterY)){
+            score += 10;
+            // Game Over!
+            if (timer != null) {
+                timer.cancel();
+                timer = null;
+                //soundPlayer.playOverSound();
+            }
+        }
+    }
+
+    public boolean hitStatus(float centerX, float centerY){
+        return (0 <= centerX && centerX <= myCharSize &&
+                myCharY <= centerY && centerY <= myCharY + myCharSize);
     }
 
     //バックボタン無効化

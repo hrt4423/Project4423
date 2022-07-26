@@ -1,6 +1,5 @@
 package io.github.hrt4423.project4423;
 
-
 import android.widget.ImageView;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -13,14 +12,13 @@ public class Enemy {
     private int enemySpeed;
     private float enemyX, enemyY;
     private int enemySize;
+    //staticでないと機能しない。
+    private static boolean motionFlg = true;//true:右, false:左
 
-
-
-    Enemy(int sWidth,int frameHeight){
+    Enemy(int sWidth){
         this.sWidth = sWidth;
-        this.frameHeight;
+
         this.enemySpeed = Math.round(sWidth/ 60f);
-    }
 
 
 
@@ -34,7 +32,10 @@ public class Enemy {
     }
 
     public void eMotion(){
-        enemyY+=5;
+
+
+        //動く向き
+
         if(motionFlg){
             //右
             enemyX += enemySpeed;
@@ -42,6 +43,7 @@ public class Enemy {
             //左
             enemyX -= enemySpeed;
         }
+
 
         //画面外の時の処理
         if (enemyX < 0){
@@ -63,13 +65,27 @@ public class Enemy {
         }else if(enemyX > sWidth +20){
             enemyX = -20;
 
+
+
+        //画面外の時の処理
+        if (enemyX < 0){
+            enemyX = 1;
+            motionFlg = true;
+        }
+        //画面外のときの処理
+        if (enemyX > sWidth - enemySize) {
+            enemyX = sWidth - enemySize;
+            motionFlg = false;
+
         }
 
 
 
         //値の更新
         enemy.setX(enemyX);
+
         enemy.setY(enemyY);
+
 
     }
 
