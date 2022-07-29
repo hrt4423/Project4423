@@ -7,7 +7,8 @@ import java.util.TimerTask;
 public class Enemy {
     public int sWidth;
     public int fHeight;
-    public static boolean motionFlg = true;//true:右, false:左
+    public static boolean motionFlgX = true;//true:右, false:左
+    public static boolean motionFlgY = true;//true:右, false:左
     public ImageView enemy;
     public int enemySpeed;
     public float enemyX, enemyY;
@@ -33,10 +34,11 @@ public class Enemy {
 
     public void eMotion(){
 
-        enemyY += 5;
-        //動く向き
+        enemyY += 10;
 
-        if(motionFlg){
+        //動く向き
+        /*
+        if(motionFlgX){
             //右
             enemyX += enemySpeed;
         }else{
@@ -45,18 +47,17 @@ public class Enemy {
         }
 
 
-        //画面外の時の処理
+        //左右に動く処理
         if (enemyX < 0){
             enemyX = 1;
-            motionFlg = true;
+            motionFlgX = true;
         }
-        //画面外のときの処理
         if (enemyX > sWidth - enemySize) {
             enemyX = sWidth - enemySize;
-            motionFlg = false;
+            motionFlgX = false;
         }
 
-
+        */
 
         //画面外に出たときの処理
         if (enemyX < -enemySize) {
@@ -66,12 +67,16 @@ public class Enemy {
             enemyX = -20;
         }
 
+        if(enemyY < -enemySize){
+            enemyY = fHeight + 20;
+        }else if(enemyY > fHeight + 20){
+            enemyY = -20;
+        }
 
 
 
         //値の更新
         enemy.setX(enemyX);
-
         enemy.setY(enemyY);
 
 

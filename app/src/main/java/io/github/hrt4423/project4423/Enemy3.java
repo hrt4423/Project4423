@@ -2,9 +2,9 @@ package io.github.hrt4423.project4423;
 
 import android.widget.ImageView;
 
-public class Enemy2 extends Enemy {
+public class Enemy3 extends Enemy {
 
-    Enemy2(int sWidth, int frameHeight){
+    Enemy3(int sWidth, int frameHeight){
         super(sWidth,frameHeight);
     }
 
@@ -16,15 +16,22 @@ public class Enemy2 extends Enemy {
         this.enemySize = enemy.getWidth();
     }
     public void eMotion(){
-        enemyY += 5;
         //動く向き
 
         if(motionFlgX){
             //右
-            enemyX += enemySpeed;
+            enemyX += 10;
         }else{
             //左
-            enemyX -= enemySpeed;
+            enemyX -= 10;
+        }
+
+        if(motionFlgY){
+            //右
+            enemyY += 5;
+        }else{
+            //左
+            enemyY -= 5;
         }
 
 
@@ -39,7 +46,16 @@ public class Enemy2 extends Enemy {
             motionFlgX = false;
         }
 
-
+        //画面外の時の処理
+        if (enemyY < 0){
+            enemyY = 1;
+            motionFlgY = true;
+        }
+        //画面外のときの処理
+        if (enemyY > fHeight - enemySize) {
+            enemyY = fHeight - enemySize;
+            motionFlgY = false;
+        }
 
         //画面外に出たときの処理
 
@@ -65,3 +81,4 @@ public class Enemy2 extends Enemy {
         enemy.setY(enemyY);
     }
 }
+
