@@ -182,7 +182,7 @@ public class MainActivity extends AppCompatActivity {
     public void changePos(){
         hitCheck();
 
-        Enemy enemy1 = new Enemy(screenWidth,frameHeight);
+        Enemy5 enemy1 = new Enemy5(screenWidth,frameHeight);
         enemy1.setEnemyInfo(enemy);
         enemy1.eMotion();
 

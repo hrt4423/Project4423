@@ -28,10 +28,10 @@ public class Enemy5 extends Enemy {
         */
         if(motionFlgX){
             //右
-            enemyX += 10;
+            enemyX += 5;
         }else{
             //左
-            enemyX -= 10;
+            enemyX -= 5;
         }
 
 
