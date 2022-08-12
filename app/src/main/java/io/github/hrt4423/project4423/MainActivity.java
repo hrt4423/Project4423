@@ -64,7 +64,6 @@ public class MainActivity extends AppCompatActivity {
 
     private Timer timer = new Timer();
     private Handler handler = new Handler();
-    HitCheck hitCheck = new HitCheck(myChar, e_bullet);
 
 
     @Override
@@ -184,6 +183,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void changePos(){
+        /*
         HitCheck hitCheck = new HitCheck(myChar, e_bullet);
         //ヒットしたらtimerを停止
         if(hitCheck.hitStatus()){ //trueならヒット
@@ -195,6 +195,8 @@ public class MainActivity extends AppCompatActivity {
                 //soundPlayer.playOverSound();
             }
         }
+         */
+        hitCheck();
 
         Enemy enemy1 = new Enemy(screenWidth);
         enemy1.setEnemyInfo(enemy);
@@ -233,7 +235,7 @@ public class MainActivity extends AppCompatActivity {
         scoreLabel.setText(getString(R.string.score, score));
 
     }
-/*
+
         public void hitCheck(){
         //敵　弾
         float eBulletCenterX = e_bullet.getX() + e_bullet.getWidth() / 2.0f;
@@ -254,7 +256,7 @@ public class MainActivity extends AppCompatActivity {
         return (myCharY <= ebCenterY && ebCenterY <= myCharHeight + myCharY &&
                 myCharX <= ebCenterX && ebCenterX <= myCharX + myCharWidth);
     }
- */
+
 
 
     //バックボタン無効化
