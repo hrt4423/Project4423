@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
 
     private Timer timer = new Timer();
     private Handler handler = new Handler();
-    private HitCheck hitCheck = new HitCheck(myChar, e_bullet);
+    HitCheck hitCheck = new HitCheck(myChar, e_bullet);
 
 
     @Override
@@ -184,6 +184,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void changePos(){
+        HitCheck hitCheck = new HitCheck(myChar, e_bullet);
         //ヒットしたらtimerを停止
         if(hitCheck.hitStatus()){ //trueならヒット
             score += 10;
