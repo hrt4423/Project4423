@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
     private boolean start_flg;
 
     private  int frameHeight;
-    private  int frameWidth;
+    //private  int frameWidth;
     private  int screenWidth;
 
     private int score = 0;
@@ -132,7 +132,7 @@ public class MainActivity extends AppCompatActivity {
             //レイアウトの高さを取得
             FrameLayout frame = findViewById(R.id.frame);
             frameHeight = frame.getHeight();
-            frameWidth  = frame.getWidth();
+            //frameWidth  = frame.getWidth();
 
             //myChar座標の取得
             myCharX = myChar.getX();
@@ -215,7 +215,7 @@ public class MainActivity extends AppCompatActivity {
         //frameの中にいるかの判定
         if (myCharX < 0) myCharX = 0;
 
-        if (myCharX > frameWidth - myCharWidth) myCharX = frameWidth - myCharWidth;
+        if (myCharX > screenWidth - myCharWidth) myCharX = screenWidth - myCharWidth;
 
         myChar.setX(myCharX);
 
