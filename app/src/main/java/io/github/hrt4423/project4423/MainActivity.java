@@ -17,9 +17,10 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity {
+    //インスタンス
+     public EnemyData eData1 = new EnemyData();
+
     //変数
-
-
     //ImageViewクラスの変数
     private ImageView myChar;
     private ImageView enemy;
@@ -29,8 +30,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView scoreLabel;
     private boolean start_flg;
 
-    private  int frameHeight;
-    //private  int frameWidth;
+    private  int frameHeight,frameWidth;
     private  int screenWidth;
 
     private int score = 0;
@@ -41,9 +41,12 @@ public class MainActivity extends AppCompatActivity {
     private int myCharWidth, myCharHeight;
 
     //敵キャラ
-    private int enemySpeed;
-    private float enemyX, enemyY;
-    private int enemySize;
+    /*
+        private int enemySpeed;
+        private float enemyX, enemyY;
+        private int enemySize;
+     */
+
 
     //弾　自キャラ
     private int mc_bulletSpeed;
@@ -89,9 +92,11 @@ public class MainActivity extends AppCompatActivity {
         screenWidth = size.x;
 
 
+
+
         //スピードの設定
         myCharSpeed = Math.round(screenWidth / 60f);
-        enemySpeed = Math.round(screenWidth/ 60f);
+        //enemySpeed = Math.round(screenWidth/ 60f);
         mc_bulletSpeed = Math.round(screenWidth / 20f);
         e_bulletSpeed = Math.round(screenWidth / 60f);
 
@@ -132,7 +137,16 @@ public class MainActivity extends AppCompatActivity {
             //レイアウトの高さを取得
             FrameLayout frame = findViewById(R.id.frame);
             frameHeight = frame.getHeight();
-            //frameWidth  = frame.getWidth();
+            frameWidth  = frame.getWidth();
+            /*
+            //画面の横幅の取得
+            WindowManager wm = getWindowManager();
+            Display display = wm.getDefaultDisplay(); //画面のサイズの取得
+            Point size = new Point();
+            display.getSize(size);
+            screenWidth = size.x;
+
+             */
 
             //myChar座標の取得
             myCharX = myChar.getX();
@@ -140,6 +154,9 @@ public class MainActivity extends AppCompatActivity {
             //myCharサイズの取得
             myCharWidth = myChar.getWidth();
             myCharHeight = myChar.getHeight();
+
+            //敵データの取得
+            eData1.setData(enemy);
 
 
             //弾　座標
