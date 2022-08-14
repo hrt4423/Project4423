@@ -2,19 +2,27 @@ package io.github.hrt4423.project4423;
 
 import android.widget.ImageView;
 
-abstract class Enemy {
+public class Enemy1 {
+    private int sWidth;
+
+    private ImageView enemy;
     private int enemySpeed;
+    private float enemyX, enemyY;
+    private int enemySize;
+    //staticでないと機能しない。
     private static boolean motionFlg = true;//true:右, false:左
 
+    Enemy1(int sWidth){
+        this.sWidth = sWidth;
+        this.enemySpeed = Math.round(sWidth/60f);
+    }
 
-
-    public void setData(){
+    public void setEnemyInfo(ImageView enemy){
         this.enemy = enemy;
         this.enemyX = enemy.getX();
         this.enemySize = enemy.getWidth();
     }
 
-    /*
     public void eMotion(){
         //動く向き
         if(motionFlg){
@@ -39,11 +47,7 @@ abstract class Enemy {
         //値の更新
         enemy.setX(enemyX);
 
-
-
     }
-
-     */
 }
 
 

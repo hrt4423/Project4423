@@ -19,6 +19,7 @@ import java.util.TimerTask;
 public class MainActivity extends AppCompatActivity {
     //インスタンス
      public EnemyData eData1 = new EnemyData();
+     public FrameData fData = new FrameData();
 
     //変数
     //ImageViewクラスの変数
@@ -30,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView scoreLabel;
     private boolean start_flg;
 
-    private  int frameHeight,frameWidth;
+    private  int frameHeight;
     private  int screenWidth;
 
     private int score = 0;
@@ -89,7 +90,9 @@ public class MainActivity extends AppCompatActivity {
         Display display = wm.getDefaultDisplay(); //画面のサイズの取得
         Point size = new Point();
         display.getSize(size);
-        screenWidth = size.x;
+        //screenWidth = size.x;
+        fData.setScreenWidth(size.x);
+
 
 
 
@@ -136,17 +139,9 @@ public class MainActivity extends AppCompatActivity {
 
             //レイアウトの高さを取得
             FrameLayout frame = findViewById(R.id.frame);
-            frameHeight = frame.getHeight();
-            frameWidth  = frame.getWidth();
-            /*
-            //画面の横幅の取得
-            WindowManager wm = getWindowManager();
-            Display display = wm.getDefaultDisplay(); //画面のサイズの取得
-            Point size = new Point();
-            display.getSize(size);
-            screenWidth = size.x;
+            //frameHeight = frame.getHeight();
+            fData.setFrameHeight(frame.getHeight());
 
-             */
 
             //myChar座標の取得
             myCharX = myChar.getX();
