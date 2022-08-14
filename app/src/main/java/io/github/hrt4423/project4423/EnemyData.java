@@ -3,8 +3,7 @@ package io.github.hrt4423.project4423;
 import android.widget.ImageView;
 
 public class EnemyData extends ActivityData{
-    //enemySize = enemy.getWidth();
-
+    //データのやり取りはすべてこのクラスで行う
     /*フィールド変数
     ImageView image;
     int imgHeight, imgWidth;
@@ -29,6 +28,18 @@ public class EnemyData extends ActivityData{
     @Override
     public float getImgY() {
         return imgY;
+    }
+
+    @Override
+    public void setImgX(float imgX){
+        this.image.setX(imgX);
+        this.imgX = imgX;
+    }
+
+    @Override
+    public void setImgY(float imgY){
+        this.image.setY(imgY);
+        this.imgY = imgY;
     }
 
     @Override

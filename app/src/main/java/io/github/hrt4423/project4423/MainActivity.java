@@ -20,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
     //インスタンス
      public EnemyData eData1 = new EnemyData();
      public FrameData fData = new FrameData();
+     public Enemy1 enemy1 = new Enemy1();
 
     //変数
     //ImageViewクラスの変数
@@ -98,10 +99,10 @@ public class MainActivity extends AppCompatActivity {
 
 
         //スピードの設定
-        myCharSpeed = Math.round(screenWidth / 60f);
+        myCharSpeed = Math.round(fData.getScreenWidth() / 60f);
         //enemySpeed = Math.round(screenWidth/ 60f);
-        mc_bulletSpeed = Math.round(screenWidth / 20f);
-        e_bulletSpeed = Math.round(screenWidth / 60f);
+        mc_bulletSpeed = Math.round(fData.getScreenWidth() / 20f);
+        e_bulletSpeed = Math.round(fData.getScreenWidth() / 60f);
 
         //setX setY メソッドで座標を設定
         enemy.setX(450.0f);
@@ -143,6 +144,7 @@ public class MainActivity extends AppCompatActivity {
             fData.setFrameHeight(frame.getHeight());
 
 
+
             //myChar座標の取得
             myCharX = myChar.getX();
             myCharY = myChar.getY();
@@ -150,8 +152,10 @@ public class MainActivity extends AppCompatActivity {
             myCharWidth = myChar.getWidth();
             myCharHeight = myChar.getHeight();
 
-            //敵データの取得
+            //敵
             eData1.setData(enemy);
+            enemy1.setData(eData1, fData);
+
 
 
             //弾　座標
@@ -195,7 +199,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void changePos(){
-        /*
+        /*ヒットチェッククラスの残骸
         HitCheck hitCheck = new HitCheck(myChar, e_bullet);
         //ヒットしたらtimerを停止
         if(hitCheck.hitStatus()){ //trueならヒット
@@ -210,11 +214,14 @@ public class MainActivity extends AppCompatActivity {
          */
         hitCheck();
 
+        /*
         Enemy enemy1 = new Enemy(screenWidth);
         enemy1.setEnemyInfo(enemy);
         enemy1.eMotion();
+         */
+        enemy1.enemyMove();
 
-        EnemyBullet eBullet = new EnemyBullet(frameHeight, screenWidth);
+        EnemyBullet eBullet = new EnemyBullet(fData.getFrameHeight(), fData.getScreenWidth());
         eBullet.setBulletInfo(e_bullet, enemy);
         eBullet.bMotion();
 
@@ -227,7 +234,7 @@ public class MainActivity extends AppCompatActivity {
         //frameの中にいるかの判定
         if (myCharX < 0) myCharX = 0;
 
-        if (myCharX > screenWidth - myCharWidth) myCharX = screenWidth - myCharWidth;
+        if (myCharX > fData.getScreenWidth() - myCharWidth) myCharX = fData.getScreenWidth() - myCharWidth;
 
         myChar.setX(myCharX);
 

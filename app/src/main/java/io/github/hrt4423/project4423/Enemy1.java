@@ -2,51 +2,35 @@ package io.github.hrt4423.project4423;
 
 import android.widget.ImageView;
 
-public class Enemy1 {
-    private int sWidth;
-
-    private ImageView enemy;
-    private int enemySpeed;
-    private float enemyX, enemyY;
-    private int enemySize;
-    //staticでないと機能しない。
-    private static boolean motionFlg = true;//true:右, false:左
-
-    Enemy1(int sWidth){
-        this.sWidth = sWidth;
-        this.enemySpeed = Math.round(sWidth/60f);
+public class Enemy1 extends Enemy{
+    @Override
+    public void setData(EnemyData enemyData, FrameData frameData){
+        eD = enemyData;
+        fD = frameData;
+        enemySpeed = Math.round(fD.getScreenWidth()/60f);
     }
 
-    public void setEnemyInfo(ImageView enemy){
-        this.enemy = enemy;
-        this.enemyX = enemy.getX();
-        this.enemySize = enemy.getWidth();
-    }
-
-    public void eMotion(){
+    @Override
+    public void enemyMove(){
         //動く向き
         if(motionFlg){
             //右
-            enemyX += enemySpeed;
+            eD.setImgX(eD.getImgX() + enemySpeed);
         }else{
             //左
-            enemyX -= enemySpeed;
+            eD.setImgX(eD.getImgX() - enemySpeed);
         }
 
         //画面外の時の処理
-        if (enemyX < 0){
-            enemyX = 1;
+        if (eD.getImgX() < 0){
+            eD.setImgX(1);
             motionFlg = true;
         }
         //画面外のときの処理
-        if (enemyX > sWidth - enemySize) {
-            enemyX = sWidth - enemySize;
+        if (eD.getImgX() > fD.getScreenWidth() - eD.imgWidth) {
+            eD.setImgX(fD.getScreenWidth() - eD.imgWidth);
             motionFlg = false;
         }
-
-        //値の更新
-        enemy.setX(enemyX);
-
     }
 }
 

@@ -8,8 +8,12 @@ abstract class ActivityData {
     protected float imgX, imgY;
 
      abstract protected void setData(ImageView iv);
+
      abstract protected float getImgX();
      abstract protected float getImgY();
+     abstract protected void setImgX(float imgX);
+     abstract protected void setImgY(float imgY);
+
      abstract protected int getImgHeight();
      abstract protected int getImgWidth();
 
