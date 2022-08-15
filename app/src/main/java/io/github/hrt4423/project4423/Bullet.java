@@ -1,39 +1,18 @@
 package io.github.hrt4423.project4423;
 
-import android.widget.ImageView;
+abstract class Bullet {
+    protected BulletData bD;
+    protected FrameData fD;
+    protected EnemyData eD;
+    //protected MyCharData;
 
-abstract class Enemy1Bullet extends Enemy{
+    protected int speed;
 
     protected int mcBCorrection = 56;
     protected int eBCorrectionX = 47;
     protected int eBCorrectionY = 150;
 
-    //TODO　BulletDataも取得してくる必要あり。
-    @Override
-    public void setData(EnemyData enemyData, FrameData frameData){
+    abstract protected void setData(BulletData bulletDataData, FrameData frameData, EnemyData enemyData);
 
-    }
-
-    @Override
-    public void Move(){
-
-    }
-
-/*
-    public void bMotion(){
-
-        //敵キャラの弾
-        if(bulletY > fHeight){
-
-            bulletY = enemy.getY() + eBCorrectionY;
-            bulletX = enemy.getX() + eBCorrectionX;
-
-            bullet.setX(bulletX);
-        }else{
-            bulletY += bulletSpeed;
-        }
-        bullet.setY(bulletY);
-    }
-
- */
+    abstract protected void move();
 }

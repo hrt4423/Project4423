@@ -11,7 +11,7 @@ abstract class Enemy {
 
     abstract protected void setData(EnemyData enemyData, FrameData frameData);
 
-    abstract protected void Move();
+    abstract protected void move();
 }
 
 

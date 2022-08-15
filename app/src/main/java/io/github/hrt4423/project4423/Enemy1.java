@@ -9,7 +9,7 @@ public class Enemy1 extends Enemy{
     }
 
     @Override
-    public void Move(){
+    public void move(){
         //動く向き
         if(motionFlg){
             //右

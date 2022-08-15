@@ -17,10 +17,14 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity {
+
     //インスタンス
      public EnemyData eData1 = new EnemyData();
      public FrameData fData = new FrameData();
      public Enemy1 enemy1 = new Enemy1();
+     public BulletData bData1 = new BulletData();
+     public Enemy1Bullet e1Bullet = new Enemy1Bullet();
+     public EnemyData[] eDList = new EnemyData[3];
 
     //変数
     //ImageViewクラスの変数
@@ -86,43 +90,29 @@ public class MainActivity extends AppCompatActivity {
         scoreLabel = findViewById(R.id.scoreLabel);
 
 
-        //画面の横幅の取得
+        //画面の横幅の取得 → FrameDataクラスへ
         WindowManager wm = getWindowManager();
         Display display = wm.getDefaultDisplay(); //画面のサイズの取得
         Point size = new Point();
         display.getSize(size);
-        //screenWidth = size.x;
         fData.setScreenWidth(size.x);
-
-
-
-
 
         //スピードの設定
         myCharSpeed = Math.round(fData.getScreenWidth() / 60f);
-        //enemySpeed = Math.round(screenWidth/ 60f);
         mc_bulletSpeed = Math.round(fData.getScreenWidth() / 20f);
-        e_bulletSpeed = Math.round(fData.getScreenWidth() / 60f);
 
-        //setX setY メソッドで座標を設定
+        //初期位置を設定　xmlファイルに分けれるかも。
         enemy.setX(450.0f);
         enemy.setY(250.0f);
         e_bullet.setX(497.0f); //enemyX + 47
         e_bullet.setY(400.0f); //enemyY + 150
-        /*
-        e_bullet.setX(-70.0f);
-        e_bullet.setY(-70.0f);
-        */
-
 
         myChar.setX(450.0f);
         myChar.setY(1500.0f);
         mc_bullet.setX(506.0f); //myCharX + 56
         mc_bullet.setY(1500.0f);
-        /*
         mc_bullet.setX(-70.0f);
         mc_bullet.setY(-70.0f);
-        */
 
         //弾を非表示
         //mc_bullet.setVisibility(View.GONE);
@@ -138,12 +128,9 @@ public class MainActivity extends AppCompatActivity {
         if(!start_flg){
             start_flg = true;
 
-            //レイアウトの高さを取得
+            //レイアウトの高さを取得　→　FrameDataクラスへ
             FrameLayout frame = findViewById(R.id.frame);
-            //frameHeight = frame.getHeight();
             fData.setFrameHeight(frame.getHeight());
-
-
 
             //myChar座標の取得
             myCharX = myChar.getX();
@@ -156,17 +143,12 @@ public class MainActivity extends AppCompatActivity {
             eData1.setData(enemy);
             enemy1.setData(eData1, fData);
 
-
+            bData1.setData(e_bullet);
+            e1Bullet.setData(bData1, fData, eData1);
 
             //弾　座標
             mc_bulletX = mc_bullet.getX();
             mc_bulletY = mc_bullet.getY();
-            e_bulletX = e_bullet.getX();
-            e_bulletY = e_bullet.getY();
-
-            //弾　サイズ
-            mc_bulletSize = mc_bullet.getHeight();
-            e_bulletSize = e_bullet.getHeight();
 
             startLabel.setVisibility(View.GONE);
 
@@ -193,37 +175,15 @@ public class MainActivity extends AppCompatActivity {
             }
         }
         return true;
-
-
     }
 
 
     public void changePos(){
-        /*ヒットチェッククラスの残骸
-        HitCheck hitCheck = new HitCheck(myChar, e_bullet);
-        //ヒットしたらtimerを停止
-        if(hitCheck.hitStatus()){ //trueならヒット
-            score += 10;
-            // Game Over!
-            if (timer != null) {
-                timer.cancel();
-                timer = null;
-                //soundPlayer.playOverSound();
-            }
-        }
-         */
+
         hitCheck();
 
-        /*
-        Enemy enemy1 = new Enemy(screenWidth);
-        enemy1.setEnemyInfo(enemy);
-        enemy1.eMotion();
-         */
-        enemy1.Move();
-
-        EnemyBullet eBullet = new EnemyBullet(fData.getFrameHeight(), fData.getScreenWidth());
-        eBullet.setBulletInfo(e_bullet, enemy);
-        eBullet.bMotion();
+        enemy1.move();
+        e1Bullet.move();
 
         //MyChar
         if (action_flg) {
@@ -252,7 +212,6 @@ public class MainActivity extends AppCompatActivity {
 
         //スコアの更新
         scoreLabel.setText(getString(R.string.score, score));
-
     }
 
         public void hitCheck(){
@@ -275,8 +234,6 @@ public class MainActivity extends AppCompatActivity {
         return (myCharY <= ebCenterY && ebCenterY <= myCharHeight + myCharY &&
                 myCharX <= ebCenterX && ebCenterX <= myCharX + myCharWidth);
     }
-
-
 
     //バックボタン無効化
     @Override
