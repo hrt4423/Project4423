@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
     //インスタンス
      public EnemyData eData1 = new EnemyData();
      public FrameData fData = new FrameData();
-     public Enemy1 enemy1 = new Enemy1();
+     public Enemy3 enemy1 = new Enemy3();
      public BulletData bData1 = new BulletData();
      public Enemy1Bullet e1Bullet = new Enemy1Bullet();
 
