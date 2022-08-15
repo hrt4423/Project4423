@@ -17,13 +17,14 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity {
-
     //インスタンス
-     public Enemy1Data eData1 = new Enemy1Data();
-     public FrameData fData = new FrameData();
-     public Enemy3 enemy1 = new Enemy3();
-     public BulletData bData1 = new BulletData();
-     public Enemy1Bullet e1Bullet = new Enemy1Bullet();
+    public MyChar1 myChar1 = new MyChar1();
+    public MyCharData mcData = new MyCharData();
+    public Enemy1Data eData1 = new Enemy1Data();
+    public FrameData fData = new FrameData();
+    public Enemy3 enemy1 = new Enemy3();
+    public BulletData bData1 = new BulletData();
+    public Enemy1Bullet e1Bullet = new Enemy1Bullet();
 
     //変数
     //ImageViewクラスの変数
@@ -131,6 +132,9 @@ public class MainActivity extends AppCompatActivity {
             FrameLayout frame = findViewById(R.id.frame);
             fData.setFrameHeight(frame.getHeight());
 
+            mcData.setData(myChar);
+            myChar1.setData(mcData, fData);
+
             //myChar座標の取得
             myCharX = myChar.getX();
             myCharY = myChar.getY();
@@ -181,9 +185,11 @@ public class MainActivity extends AppCompatActivity {
 
         hitCheck();
 
+        myChar1.move(action_flg);
         enemy1.move();
         e1Bullet.move();
 
+        /*
         //MyChar
         if (action_flg) {
             myCharX -= myCharSpeed;
@@ -196,6 +202,8 @@ public class MainActivity extends AppCompatActivity {
         if (myCharX > fData.getScreenWidth() - myCharWidth) myCharX = fData.getScreenWidth() - myCharWidth;
 
         myChar.setX(myCharX);
+
+         */
 
 
         //自キャラの弾
@@ -237,6 +245,5 @@ public class MainActivity extends AppCompatActivity {
     //バックボタン無効化
     @Override
     public void onBackPressed() { }
-
 }
 
