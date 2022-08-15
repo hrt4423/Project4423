@@ -10,7 +10,7 @@ abstract class Enemy {
     protected static boolean motionFlg = true;//true:右, false:左
     protected static boolean motionFlgY = true;//true:下, false:上
 
-    abstract protected void setData(EnemyData enemyData, FrameData frameData);
+    abstract protected void setData(ActivityData enemyData, FrameData frameData);
 
     abstract protected void move();
 }

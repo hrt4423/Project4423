@@ -19,7 +19,7 @@ import java.util.TimerTask;
 public class MainActivity extends AppCompatActivity {
 
     //インスタンス
-     public EnemyData eData1 = new EnemyData();
+     public Enemy1Data eData1 = new Enemy1Data();
      public FrameData fData = new FrameData();
      public Enemy3 enemy1 = new Enemy3();
      public BulletData bData1 = new BulletData();

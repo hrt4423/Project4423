@@ -3,7 +3,7 @@ package io.github.hrt4423.project4423;
 public class Enemy1 extends Enemy{
 
     @Override
-    public void setData(EnemyData enemyData, FrameData frameData){
+    public void setData(ActivityData enemyData, FrameData frameData){
         eD = enemyData;
         fD = frameData;
         speed = Math.round(fD.getScreenWidth()/60f);
