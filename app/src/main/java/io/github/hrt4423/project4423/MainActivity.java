@@ -17,19 +17,24 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity {
-
     //インスタンス
      public Enemy1Data eData1 = new Enemy1Data();
+     public Enemy1Data eData2 = new Enemy1Data();
      public FrameData fData = new FrameData();
      public Enemy3 enemy1 = new Enemy3();
+     public Enemy2 enemy2 = new Enemy2();
      public BulletData bData1 = new BulletData();
+     public BulletData bData2 = new BulletData();
      public Enemy1Bullet e1Bullet = new Enemy1Bullet();
+     public Enemy1Bullet e2Bullet = new Enemy1Bullet();
 
     //変数
     //ImageViewクラスの変数
     private ImageView myChar;
     private ImageView enemy;
+    private ImageView enemyth;
     private ImageView e_bullet;
+    private ImageView e_bullet2;
     private ImageView mc_bullet;
     private TextView startLabel;
     private TextView scoreLabel;
@@ -83,7 +88,9 @@ public class MainActivity extends AppCompatActivity {
         //findViewByIdでactivity_mainで設定したidからviewを探す。
         myChar = findViewById(R.id.mychar);
         enemy = findViewById(R.id.enemy_mob3);
+        enemyth = findViewById(R.id.enemy_mob31);
         e_bullet = findViewById(R.id.attack_effect_enemy);
+        e_bullet2 = findViewById(R.id.attack_effect_enemy03);
         mc_bullet = findViewById(R.id.attack_effect_mychar);
         startLabel = findViewById(R.id.startLabel);
         scoreLabel = findViewById(R.id.scoreLabel);
@@ -142,8 +149,15 @@ public class MainActivity extends AppCompatActivity {
             eData1.setData(enemy);
             enemy1.setData(eData1, fData);
 
-            bData1.setData(e_bullet);
+            bData1.setData(e_bullet2);
             e1Bullet.setData(bData1, fData, eData1);
+
+            eData2.setData(enemyth);
+            enemy2.setData(eData2,fData);
+
+            bData2.setData(e_bullet2);
+            e2Bullet.setData(bData2,fData,eData2);
+
 
             //弾　座標
             mc_bulletX = mc_bullet.getX();
@@ -183,6 +197,8 @@ public class MainActivity extends AppCompatActivity {
 
         enemy1.move();
         e1Bullet.move();
+        enemy2.move();
+        e2Bullet.move();
 
         //MyChar
         if (action_flg) {
@@ -217,6 +233,8 @@ public class MainActivity extends AppCompatActivity {
         //敵　弾
         float eBulletCenterX = e_bullet.getX() + e_bullet.getWidth() / 2.0f;
         float eBulletCenterY = e_bullet.getY() + e_bullet.getHeight() / 2.0f;
+
+
 
         if(hitStatus(eBulletCenterX, eBulletCenterY)){ //trueならヒット
             score += 10;

@@ -65,6 +65,14 @@
             tools:layout_editor_absoluteX="185dp"
             tools:layout_editor_absoluteY="120dp" />
 
+            <ImageView
+                android:id="@+id/attack_effect_enemy03"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                app:srcCompat="@drawable/attack_effect_enemy"
+                tools:layout_editor_absoluteX="185dp"
+                tools:layout_editor_absoluteY="120dp" />
+
         <ImageView
             android:id="@+id/attack_effect_mychar"
             android:layout_width="19dp"
