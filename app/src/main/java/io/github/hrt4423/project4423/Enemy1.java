@@ -1,24 +1,22 @@
 package io.github.hrt4423.project4423;
 
-import android.widget.ImageView;
-
 public class Enemy1 extends Enemy{
     @Override
     public void setData(EnemyData enemyData, FrameData frameData){
         eD = enemyData;
         fD = frameData;
-        enemySpeed = Math.round(fD.getScreenWidth()/60f);
+        speed = Math.round(fD.getScreenWidth()/60f);
     }
 
     @Override
-    public void enemyMove(){
+    public void Move(){
         //動く向き
         if(motionFlg){
             //右
-            eD.setImgX(eD.getImgX() + enemySpeed);
+            eD.setImgX(eD.getImgX() + speed);
         }else{
             //左
-            eD.setImgX(eD.getImgX() - enemySpeed);
+            eD.setImgX(eD.getImgX() - speed);
         }
 
         //画面外の時の処理
@@ -33,5 +31,4 @@ public class Enemy1 extends Enemy{
         }
     }
 }
-
 

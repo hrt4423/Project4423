@@ -219,7 +219,7 @@ public class MainActivity extends AppCompatActivity {
         enemy1.setEnemyInfo(enemy);
         enemy1.eMotion();
          */
-        enemy1.enemyMove();
+        enemy1.Move();
 
         EnemyBullet eBullet = new EnemyBullet(fData.getFrameHeight(), fData.getScreenWidth());
         eBullet.setBulletInfo(e_bullet, enemy);
