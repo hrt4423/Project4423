@@ -24,7 +24,6 @@ public class MainActivity extends AppCompatActivity {
      public Enemy1 enemy1 = new Enemy1();
      public BulletData bData1 = new BulletData();
      public Enemy1Bullet e1Bullet = new Enemy1Bullet();
-     public EnemyData[] eDList = new EnemyData[3];
 
     //変数
     //ImageViewクラスの変数
