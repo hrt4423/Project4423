@@ -49,6 +49,14 @@
                 tools:layout_editor_absoluteX="173dp"
                 tools:layout_editor_absoluteY="50dp" />
 
+            <ImageView
+                android:id="@+id/enemy_mob32"
+                android:layout_width="65dp"
+                android:layout_height="59dp"
+                app:srcCompat="@drawable/enemy_mob3"
+                tools:layout_editor_absoluteX="173dp"
+                tools:layout_editor_absoluteY="50dp" />
+
         <ImageView
             android:id="@+id/mychar"
             android:layout_width="61dp"
