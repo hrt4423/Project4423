@@ -9,10 +9,19 @@
     tools:context=".ResultActivity">
 
     <TextView
+        android:id="@+id/overLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="GAME OVER"
         android:textSize="30sp"/>
+
+    <ImageView
+        android:id="@+id/mychar"
+        android:layout_width="61dp"
+        android:layout_height="74dp"
+        app:srcCompat="@drawable/mychar"
+        tools:layout_editor_absoluteX="175dp"
+        tools:layout_editor_absoluteY="559dp"/>
 
     <TextView
         android:id="@+id/scoreLabel"
@@ -31,6 +40,7 @@
         android:layout_marginTop="80dp"/>
 
     <Button
+        android:id="@+id/tryLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="もう一度プレイ"

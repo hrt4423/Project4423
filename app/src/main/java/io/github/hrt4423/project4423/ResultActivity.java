@@ -4,8 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.AnimationUtils;
 import android.widget.TextView;
 
 public class ResultActivity extends AppCompatActivity {
@@ -14,9 +16,20 @@ public class ResultActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_result);
+        findViewById(R.id.mychar).startAnimation(AnimationUtils.loadAnimation(this, R.anim.a1));
 
         TextView scoreLabel = findViewById(R.id.scoreLabel);
         TextView highScoreLabel = findViewById(R.id.highScoreLabel);
+        TextView tryLabel = findViewById(R.id.tryLabel);
+        TextView overLabel = findViewById(R.id.overLabel);
+
+
+
+        Typeface customFont = Typeface.createFromAsset(getAssets(), "PixelMplus10-Regular.ttf");
+        scoreLabel.setTypeface(customFont);
+        highScoreLabel.setTypeface(customFont);
+        tryLabel.setTypeface(customFont);
+        overLabel.setTypeface(customFont);
 
         int score = getIntent().getIntExtra("SCORE", 0);
         scoreLabel.setText(score + "");
