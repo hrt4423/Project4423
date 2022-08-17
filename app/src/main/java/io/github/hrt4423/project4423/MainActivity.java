@@ -10,6 +10,7 @@ import android.view.Display;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
+import android.view.animation.AnimationUtils;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -84,7 +85,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {//引数：アプリの状態情報
         super.onCreate(savedInstanceState);//親クラスのメソッドを呼び出しておく。
         setContentView(R.layout.activity_main);//画面に表示すべきビューを設定する。
-
 
         //findViewByIdでactivity_mainで設定したidからviewを探す。
         myChar = findViewById(R.id.mychar);
