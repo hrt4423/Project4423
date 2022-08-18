@@ -20,6 +20,7 @@ import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity {
     //インスタンス
+
      public Enemy1Data eData1 = new Enemy1Data();
      public Enemy1Data eData2 = new Enemy1Data();
      public Enemy1Data eData3 = new Enemy1Data();
@@ -29,6 +30,9 @@ public class MainActivity extends AppCompatActivity {
      public Enemy4 enemy3 = new Enemy4();
      public BulletData bData1 = new BulletData();
      public Enemy1Bullet e1Bullet = new Enemy1Bullet();
+     public MyChar1 myChar1 = new MyChar1();
+     public MyCharData mcData = new MyCharData();
+
 
     //変数
     //ImageViewクラスの変数
@@ -143,6 +147,9 @@ public class MainActivity extends AppCompatActivity {
             FrameLayout frame = findViewById(R.id.frame);
             fData.setFrameHeight(frame.getHeight());
 
+            mcData.setData(myChar);
+            myChar1.setData(mcData, fData);
+
             //myChar座標の取得
             myCharX = myChar.getX();
             myCharY = myChar.getY();
@@ -201,12 +208,14 @@ public class MainActivity extends AppCompatActivity {
 
         hitCheck();
 
+        myChar1.move(action_flg);
         enemy1.move();
         e1Bullet.move();
         enemy2.move();
         enemy3.move();
 
 
+        /*
         //MyChar
         if (action_flg) {
             myCharX -= myCharSpeed;
@@ -219,6 +228,8 @@ public class MainActivity extends AppCompatActivity {
         if (myCharX > fData.getScreenWidth() - myCharWidth) myCharX = fData.getScreenWidth() - myCharWidth;
 
         myChar.setX(myCharX);
+
+         */
 
 
         //自キャラの弾
@@ -267,6 +278,5 @@ public class MainActivity extends AppCompatActivity {
     //バックボタン無効化
     @Override
     public void onBackPressed() { }
-
 }
 
