@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.graphics.Point;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.Display;
@@ -90,6 +91,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);//親クラスのメソッドを呼び出しておく。
         setContentView(R.layout.activity_main);//画面に表示すべきビューを設定する。
 
+
+
         //findViewByIdでactivity_mainで設定したidからviewを探す。
         myChar = findViewById(R.id.mychar);
         enemy = findViewById(R.id.enemy_mob3);
@@ -99,6 +102,10 @@ public class MainActivity extends AppCompatActivity {
         mc_bullet = findViewById(R.id.attack_effect_mychar);
         startLabel = findViewById(R.id.startLabel);
         scoreLabel = findViewById(R.id.scoreLabel);
+
+        //フォントの設定
+        Typeface customFont = Typeface.createFromAsset(getAssets(), "PixelMplus10-Regular.ttf");
+        scoreLabel.setTypeface(customFont);
 
 
         //画面の横幅の取得 → FrameDataクラスへ
