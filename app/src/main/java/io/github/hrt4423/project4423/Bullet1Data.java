@@ -2,7 +2,7 @@ package io.github.hrt4423.project4423;
 
 import android.widget.ImageView;
 
-public class BulletData extends ActivityData{
+public class Bullet1Data extends ActivityData{
     /*フィールド変数
     ImageView image;
     int imgHeight, imgWidth;
@@ -48,5 +48,15 @@ public class BulletData extends ActivityData{
     @Override
     public int getImgWidth(){
         return imgWidth;
+    }
+
+    @Override
+    protected float getImgCenterX() {
+        return imgX + imgWidth / 2.0f;
+    }
+
+    @Override
+    protected float getImgCenterY() {
+        return imgY + imgHeight / 2.0f;
     }
 }

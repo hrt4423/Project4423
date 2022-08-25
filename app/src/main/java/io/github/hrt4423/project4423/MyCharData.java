@@ -44,4 +44,13 @@ public class MyCharData extends ActivityData{
         return imgWidth;
     }
 
+    @Override
+    protected float getImgCenterX() {
+        return imgX + imgWidth / 2.0f;
+    }
+
+    @Override
+    protected float getImgCenterY() {
+        return imgY + imgHeight / 2.0f;
+    }
 }

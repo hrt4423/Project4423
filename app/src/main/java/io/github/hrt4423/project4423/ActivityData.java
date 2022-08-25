@@ -6,6 +6,7 @@ abstract class ActivityData {
     protected ImageView image;
     protected int imgHeight, imgWidth;
     protected float imgX, imgY;
+    protected float imgCenterX, imgCenterY;
 
      abstract protected void setData(ImageView iv);
 
@@ -16,6 +17,6 @@ abstract class ActivityData {
 
      abstract protected int getImgHeight();
      abstract protected int getImgWidth();
-
-
+     abstract protected float getImgCenterX();
+     abstract protected float getImgCenterY();
 }
