@@ -11,7 +11,6 @@ import android.view.Display;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
-import android.view.animation.AnimationUtils;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -29,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
      public Enemy3 enemy1 = new Enemy3();
      public Enemy2 enemy2 = new Enemy2();
      public Enemy4 enemy3 = new Enemy4();
-     public BulletData bData1 = new BulletData();
+     public Bullet1Data bData1 = new Bullet1Data();
      public Enemy1Bullet e1Bullet = new Enemy1Bullet();
      public MyChar1 myChar1 = new MyChar1();
      public MyCharData mcData = new MyCharData();
@@ -261,13 +260,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
         public void hitCheck(){
-        //敵　弾
+        /*敵　弾
         float eBulletCenterX = e_bullet.getX() + e_bullet.getWidth() / 2.0f;
         float eBulletCenterY = e_bullet.getY() + e_bullet.getHeight() / 2.0f;
 
+         */
 
 
-        if(hitStatus(eBulletCenterX, eBulletCenterY)){ //trueならヒット
+
+        if(HitCheck.hitStatus(mcData, bData1)){ //trueならヒット
             score += 10;
             // Game Over!
             if (timer != null) {
@@ -283,10 +284,13 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    /*
     public boolean hitStatus(float ebCenterX, float ebCenterY){ //trueならヒット
         return (myCharY <= ebCenterY && ebCenterY <= myCharHeight + myCharY &&
                 myCharX <= ebCenterX && ebCenterX <= myCharX + myCharWidth);
     }
+
+     */
 
     //バックボタン無効化
     @Override

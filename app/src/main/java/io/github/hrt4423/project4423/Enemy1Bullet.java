@@ -2,8 +2,8 @@ package io.github.hrt4423.project4423;
 
 public class Enemy1Bullet extends Bullet{
     @Override
-    public void setData(BulletData bulletDataData, FrameData frameData, ActivityData enemyData){
-        bD = bulletDataData;
+    public void setData(Bullet1Data bulletData1Data, FrameData frameData, ActivityData enemyData){
+        bD = bulletData1Data;
         fD = frameData;
         eD = enemyData;
         speed = Math.round(fD.getScreenWidth()/60f);
