@@ -85,11 +85,17 @@ public class MainActivity extends AppCompatActivity {
     private Timer timer = new Timer();
     private Handler handler = new Handler();
 
+    // Sound
+    private SoundPlayer soundPlayer;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {//引数：アプリの状態情報
         super.onCreate(savedInstanceState);//親クラスのメソッドを呼び出しておく。
         setContentView(R.layout.activity_main);//画面に表示すべきビューを設定する。
+
+
+        soundPlayer = new SoundPlayer(this);
 
 
 
