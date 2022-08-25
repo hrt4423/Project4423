@@ -24,7 +24,7 @@ public class ResultActivity extends AppCompatActivity {
         TextView overLabel = findViewById(R.id.overLabel);
 
 
-
+        //フォントの設定
         Typeface customFont = Typeface.createFromAsset(getAssets(), "PixelMplus10-Regular.ttf");
         scoreLabel.setTypeface(customFont);
         highScoreLabel.setTypeface(customFont);
