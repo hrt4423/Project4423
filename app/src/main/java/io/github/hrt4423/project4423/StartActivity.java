@@ -9,7 +9,7 @@ import android.view.View;
 import android.view.animation.AnimationUtils;
 import android.widget.TextView;
 
-public class StartActivity extends AppCompatActivity {
+public class StartActivity extends AppCompatActivity implements View.OnClickListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,9 +23,18 @@ public class StartActivity extends AppCompatActivity {
         myText.setTypeface(customFont);
         btntext.setTypeface(customFont);
 
+        // クリックリスナーをセット
+        findViewById(R.id.btntext).setOnClickListener(this);
+
     }
 
-    public void startGame(View view) {
+    @Override
+    public void onClick(View v){
         startActivity(new Intent(getApplicationContext(), MainActivity.class));
+
+        if(v.getId() == R.id.btntext){
+            overridePendingTransition(android.R.anim.slide_in_right, android.R.anim.slide_out_left);
+
+        }
     }
 }
