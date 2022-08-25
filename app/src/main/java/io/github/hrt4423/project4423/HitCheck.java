@@ -3,8 +3,10 @@ package io.github.hrt4423.project4423;
 import android.content.Intent;
 
 public class HitCheck {
+    //ヒットフラグ
+    public static boolean hit_flg;
 
-    public static boolean hitStatus(ActivityData charData, ActivityData bulletData){
+    public static boolean hitCheck(ActivityData charData, ActivityData bulletData){
         //ヒットしたかの判定
         int cHeight = charData.getImgHeight();
         int cWidth = charData.getImgWidth();
@@ -13,9 +15,18 @@ public class HitCheck {
         float bulletCenterX = bulletData.getImgCenterX();
         float bulletCenterY = bulletData.getImgCenterY();
 
-        return (bulletCenterY >= cY &&
-                bulletCenterY <= cY + cHeight &&
-                bulletCenterX >= cX &&
-                bulletCenterX <= cX + cWidth);
+        //HitCheck.hit_flg = false;
+
+        if(bulletCenterY >= cY && bulletCenterY <= cY + cHeight &&
+                bulletCenterX >= cX && bulletCenterX <= cX + cWidth){
+            hit_flg = true;
+        }else{
+            hit_flg = false;
+        }
+        return hit_flg;
+    }
+
+    public static boolean getHitFlg(){
+        return hit_flg;
     }
 }

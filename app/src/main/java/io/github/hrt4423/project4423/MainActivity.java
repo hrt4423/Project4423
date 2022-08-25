@@ -217,32 +217,14 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void changePos(){
-
-        hitCheck();
+        //ヒットチェック
+        HitCheck.hitCheck(mcData, bData1);
 
         myChar1.move(action_flg);
         enemy1.move();
         e1Bullet.move();
         enemy2.move();
         enemy3.move();
-
-
-        /*
-        //MyChar
-        if (action_flg) {
-            myCharX -= myCharSpeed;
-        } else {
-            myCharX += myCharSpeed;
-        }
-        //frameの中にいるかの判定
-        if (myCharX < 0) myCharX = 0;
-
-        if (myCharX > fData.getScreenWidth() - myCharWidth) myCharX = fData.getScreenWidth() - myCharWidth;
-
-        myChar.setX(myCharX);
-
-         */
-
 
         //自キャラの弾
         if(mc_bulletY < 0){
@@ -255,20 +237,8 @@ public class MainActivity extends AppCompatActivity {
         }
         mc_bullet.setY(mc_bulletY);
 
-        //スコアの更新
-        scoreLabel.setText(getString(R.string.score, score));
-    }
-
-        public void hitCheck(){
-        /*敵　弾
-        float eBulletCenterX = e_bullet.getX() + e_bullet.getWidth() / 2.0f;
-        float eBulletCenterY = e_bullet.getY() + e_bullet.getHeight() / 2.0f;
-
-         */
-
-
-
-        if(HitCheck.hitStatus(mcData, bData1)){ //trueならヒット
+        //ゲームの継続判定------------------------------------------------------------------
+        if(HitCheck.getHitFlg()){ //trueならヒット
             score += 10;
             // Game Over!
             if (timer != null) {
@@ -282,16 +252,11 @@ public class MainActivity extends AppCompatActivity {
             intent.putExtra("SCORE", score);
             startActivity(intent);
         }
+        //-----------------------------------------------------------------------------
+
+        //スコアの更新
+        scoreLabel.setText(getString(R.string.score, score));
     }
-
-    /*
-    public boolean hitStatus(float ebCenterX, float ebCenterY){ //trueならヒット
-        return (myCharY <= ebCenterY && ebCenterY <= myCharHeight + myCharY &&
-                myCharX <= ebCenterX && ebCenterX <= myCharX + myCharWidth);
-    }
-
-     */
-
     //バックボタン無効化
     @Override
     public void onBackPressed() { }
