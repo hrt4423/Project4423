@@ -1,6 +1,6 @@
 package io.github.hrt4423.project4423;
 
-public class Enemy1Bullet extends Bullet{
+public class MyCharBullet extends Bullet{
     @Override
     public void setData(Bullet1Data bulletData1Data, FrameData frameData, ActivityData activityData){
         bD = bulletData1Data;

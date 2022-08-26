@@ -31,11 +31,11 @@ public class SoundPlayer {
         soundPool.play(overSound, 1.0f, 1.0f, 1, 0, 1.0f);
     }
 
-    public void playMyshotSound() {
+    public void playMyCharShotSound() {
         soundPool.play(Myshot,1.0f,1.0f,1,0,1.0f);
     }
 
-    public void playEnemyshotSound(){
+    public void playEnemyShotSound(){
         soundPool.play(Enemyshot,1.0f,1.0f,1,0,1.0f);
     }
 

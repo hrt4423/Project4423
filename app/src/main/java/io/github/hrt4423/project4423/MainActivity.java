@@ -220,7 +220,7 @@ public class MainActivity extends AppCompatActivity {
             if (timer != null) {
                 timer.cancel();
                 timer = null;
-                //soundPlayer.playOverSound();
+                soundPlayer.playOverSound();
             }
 
             // 結果画面へ
