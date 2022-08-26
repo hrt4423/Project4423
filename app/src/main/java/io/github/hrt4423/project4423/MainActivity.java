@@ -19,57 +19,62 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity {
-    //インスタンス
+    //各インスタンス
+    //フレームデータ
+    public FrameData fData = new FrameData();
 
-     public Enemy1Data eData1 = new Enemy1Data();
-     public Enemy1Data eData2 = new Enemy1Data();
-     public Enemy1Data eData3 = new Enemy1Data();
-     public FrameData fData = new FrameData();
-     public Enemy3 enemy1 = new Enemy3();
-     public Enemy2 enemy2 = new Enemy2();
-     public Enemy4 enemy3 = new Enemy4();
-     public Bullet1Data bData1 = new Bullet1Data();
-     public Enemy1Bullet e1Bullet = new Enemy1Bullet();
-     public MyChar1 myChar1 = new MyChar1();
-     public MyCharData mcData = new MyCharData();
+    //自キャラ
+    public MyChar1 myChar1 = new MyChar1();
+    public MyCharData mcData = new MyCharData();
+
+    //敵１
+    public Enemy enemy1 = new Enemy1();
+    public ActivityData eData1 = new Enemy1Data();
+
+    //敵２
+    public Enemy enemy2 = new Enemy2();
+    public ActivityData eData2 = new Enemy2Data();
+
+    //敵３
+    public Enemy enemy3 = new Enemy3();
+    public ActivityData eData3 = new Enemy3Data();
+
+    //弾１
+    public Bullet1Data bData1 = new Bullet1Data();
+    public Enemy1Bullet e1Bullet = new Enemy1Bullet();
 
     //変数
     //ImageViewクラスの変数
     private ImageView myChar;
-    private ImageView enemy;
-    private ImageView enemyth;
-    private ImageView enemyth2;
-    private ImageView e_bullet;
     private ImageView mc_bullet;
+
+    private ImageView enemy1_1;
+    private ImageView e1_bullet;
+
+    private ImageView enemy2_1;
+
+
+    private ImageView enemy3_1;
+
+
     private TextView startLabel;
     private TextView scoreLabel;
     private boolean start_flg;
 
-    private  int frameHeight;
-    private  int screenWidth;
-
     private int score = 0;
 
-    //自キャラ
-    private  int myCharSpeed;
-    private  float myCharX, myCharY;
-    private int myCharWidth, myCharHeight;
-
-    //弾　自キャラ
+    //TODO 別ファイルに分離　弾　自キャラ
     private int mc_bulletSpeed;
     private float mc_bulletX, mc_bulletY;
     private int mc_bulletSize;
 
-    //弾　敵キャラ
-    private  int e_bulletSpeed;
-    private float e_bulletX, e_bulletY;
-    private int e_bulletSize;
 
     //自キャラと弾のずれ補正値
     private int mcBCorrection = 56;
     private int eBCorrectionX = 47;
     private int eBCorrectionY = 150;
 
+    //-----------------------------------------------
     private  boolean action_flg = false;
 
     private Timer timer = new Timer();
@@ -77,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
 
     // Sound
     private SoundPlayer soundPlayer;
-
+    //------------------------------------------------
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {//引数：アプリの状態情報
@@ -88,11 +93,14 @@ public class MainActivity extends AppCompatActivity {
 
         //findViewByIdでactivity_mainで設定したidからviewを探す。
         myChar = findViewById(R.id.mychar);
-        enemy = findViewById(R.id.enemy_mob3);
-        enemyth = findViewById(R.id.enemy_mob31);
-        enemyth2 = findViewById(R.id.enemy_mob32);
-        e_bullet = findViewById(R.id.attack_effect_enemy);
+
+        enemy1_1 = findViewById(R.id.enemy1_1);
+        enemy2_1 = findViewById(R.id.enemy2_1);
+        enemy3_1 = findViewById(R.id.enemy3_1);
+
+        e1_bullet = findViewById(R.id.attack_effect_enemy);
         mc_bullet = findViewById(R.id.attack_effect_mychar);
+
         startLabel = findViewById(R.id.startLabel);
         scoreLabel = findViewById(R.id.scoreLabel);
 
@@ -108,19 +116,18 @@ public class MainActivity extends AppCompatActivity {
         display.getSize(size);
         fData.setScreenWidth(size.x);
 
-        //スピードの設定
-        myCharSpeed = Math.round(fData.getScreenWidth() / 60f);
+        //TODO 自キャラの弾の処理を別ファイルに分離 スピードの設定
         mc_bulletSpeed = Math.round(fData.getScreenWidth() / 20f);
 
         //初期位置を設定　xmlファイルに分けれるかも。
-        enemy.setX(450.0f);
-        enemy.setY(250.0f);
+        enemy1_1.setX(450.0f);
+        enemy1_1.setY(250.0f);
 
-        enemyth2.setX(250.0f);
-        enemyth2.setY(450.0f);
+        enemy2_1.setX(250.0f);
+        enemy2_1.setY(450.0f);
 
-        e_bullet.setX(497.0f); //enemyX + 47
-        e_bullet.setY(400.0f); //enemyY + 150
+        e1_bullet.setX(497.0f); //enemyX + 47
+        e1_bullet.setY(400.0f); //enemyY + 150
 
         myChar.setX(450.0f);
         myChar.setY(1500.0f);
@@ -131,7 +138,7 @@ public class MainActivity extends AppCompatActivity {
 
         //弾を非表示
         //mc_bullet.setVisibility(View.GONE);
-        //e_bullet.setVisibility(View.GONE);
+        //e1_bullet.setVisibility(View.GONE);
 
         scoreLabel.setText(getString(R.string.score, 0));
     }
@@ -145,22 +152,16 @@ public class MainActivity extends AppCompatActivity {
             FrameLayout frame = findViewById(R.id.frame);
             fData.setFrameHeight(frame.getHeight());
 
+            //各キャラクターと弾
+            //自キャラ
             mcData.setData(myChar);
             myChar1.setData(mcData, fData);
 
-            //敵
-            eData1.setData(enemy);
-            enemy1.setData(eData1, fData);
+            //敵キャラ
+            setCharData();
 
-            bData1.setData(e_bullet);
-            e1Bullet.setData(bData1, fData, eData1);
-
-            eData2.setData(enemyth);
-            enemy2.setData(eData2,fData);
-
-            eData3.setData(enemyth2);
-            enemy3.setData(eData3,fData);
-
+            //弾
+            setBulletData();
             startLabel.setVisibility(View.GONE);
 
             timer.schedule(new TimerTask() {
@@ -201,8 +202,9 @@ public class MainActivity extends AppCompatActivity {
 
         //自キャラの弾
         if(mc_bulletY < 0){
-            mc_bulletY = myChar.getY();
-            mc_bulletX = myCharX + mcBCorrection;
+            mc_bulletY = mcData.getImgY();
+            //mc_bulletX = myCharX + mcBCorrection;
+            mc_bulletX = mcData.getImgX() + mcBCorrection;
 
             mc_bullet.setX(mc_bulletX);
         }else{
@@ -230,8 +232,26 @@ public class MainActivity extends AppCompatActivity {
         //スコアの更新
         scoreLabel.setText(getString(R.string.score, score));
     }
-    //バックボタン無効化
+
+    public void setCharData(){
+        eData1.setData(enemy1_1);
+        enemy1.setData(eData1, fData);
+
+        eData2.setData(enemy2_1);
+        enemy2.setData(eData2,fData);
+
+        eData3.setData(enemy3_1);
+        enemy3.setData(eData3,fData);
+    }
+
+    public void setBulletData(){
+        bData1.setData(e1_bullet);
+        e1Bullet.setData(bData1, fData, eData1);
+    }
+
+    //バックボタン無効化---------------------------------------------------------------------------------
     @Override
     public void onBackPressed() { }
+    //-----------------------------------------------------------------------------------------------
 }
 
