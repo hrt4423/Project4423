@@ -21,6 +21,7 @@ public class SoundPlayer {
         overSound = soundPool.load(context, R.raw.short_bomb, 1);
         Myshot = soundPool.load(context,R.raw.se_shot10,1);
         Enemyshot = soundPool.load(context,R.raw.se_shot09,1);
+
     }
 
     public void playHitSound() {
