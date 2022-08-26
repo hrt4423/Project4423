@@ -29,19 +29,25 @@ public class MainActivity extends AppCompatActivity {
 
     //敵１
     public Enemy enemy1 = new Enemy1();
-    public ActivityData eData1 = new Enemy1Data();
+    public ActivityData eData1 = new Enemy1_Data();
+    //弾１
+    public Bullet e1Bullet = new Enemy1_Bullet();
+    public ActivityData b1Data = new Enemy1_Bullet_Data();
 
     //敵２
     public Enemy enemy2 = new Enemy2();
-    public ActivityData eData2 = new Enemy2Data();
+    public ActivityData eData2 = new Enemy2_Data();
+    //弾２
+    public Bullet e2Bullet = new Enemy2_Bullet();
+    public ActivityData b2Data = new Enemy2_Bullet_Data();
 
     //敵３
     public Enemy enemy3 = new Enemy4();
-    public ActivityData eData3 = new Enemy3Data();
+    public ActivityData eData3 = new Enemy3_Data();
+    //弾3
+    public Bullet e3Bullet = new Enemy2_Bullet();
+    public ActivityData b3Data = new Enemy2_Bullet_Data();
 
-    //弾１
-    public Bullet1Data bData1 = new Bullet1Data();
-    public Enemy1Bullet e1Bullet = new Enemy1Bullet();
 
     //変数
     //ImageViewクラスの変数
@@ -49,13 +55,13 @@ public class MainActivity extends AppCompatActivity {
     private ImageView mc_bullet;
 
     private ImageView enemy1_1;
-    private ImageView e1_bullet;
+    private ImageView e1_1_bullet;
 
     private ImageView enemy2_1;
-
+    private ImageView e2_1_bullet;
 
     private ImageView enemy3_1;
-
+    private ImageView e3_1_bullet;
 
     private TextView startLabel;
     private TextView scoreLabel;
@@ -93,13 +99,16 @@ public class MainActivity extends AppCompatActivity {
 
         //findViewByIdでactivity_mainで設定したidからviewを探す。
         myChar = findViewById(R.id.mychar);
+        mc_bullet = findViewById(R.id.attack_effect_mychar);
 
         enemy1_1 = findViewById(R.id.enemy1_1);
         enemy2_1 = findViewById(R.id.enemy2_1);
         enemy3_1 = findViewById(R.id.enemy3_1);
 
-        e1_bullet = findViewById(R.id.attack_effect_enemy);
-        mc_bullet = findViewById(R.id.attack_effect_mychar);
+        e1_1_bullet = findViewById(R.id.bullet_1);
+        e2_1_bullet = findViewById(R.id.bullet_2);
+        e3_1_bullet = findViewById(R.id.bullet_3);
+
 
         startLabel = findViewById(R.id.startLabel);
         scoreLabel = findViewById(R.id.scoreLabel);
@@ -125,9 +134,15 @@ public class MainActivity extends AppCompatActivity {
 
         enemy2_1.setX(250.0f);
         enemy2_1.setY(450.0f);
+        e2_1_bullet.setX(250.0f);
+        e2_1_bullet.setY(450.0f);
 
-        e1_bullet.setX(497.0f); //enemyX + 47
-        e1_bullet.setY(400.0f); //enemyY + 150
+        //e1_1_bullet.setX(497.0f); //enemyX + 47
+        //e1_1_bullet.setY(400.0f); //enemyY + 150
+
+        e1_1_bullet.setX(-100.0f);
+        e2_1_bullet.setX(-100.0f);
+        e3_1_bullet.setX(-100.0f);
 
         myChar.setX(450.0f);
         myChar.setY(1500.0f);
@@ -137,8 +152,9 @@ public class MainActivity extends AppCompatActivity {
         mc_bullet.setY(-70.0f);
 
         //弾を非表示
-        //mc_bullet.setVisibility(View.GONE);
-        //e1_bullet.setVisibility(View.GONE);
+        e1_1_bullet.setVisibility(View.GONE);
+        e2_1_bullet.setVisibility(View.GONE);
+        e3_1_bullet.setVisibility(View.GONE);
 
         scoreLabel.setText(getString(R.string.score, 0));
     }
@@ -152,16 +168,18 @@ public class MainActivity extends AppCompatActivity {
             FrameLayout frame = findViewById(R.id.frame);
             fData.setFrameHeight(frame.getHeight());
 
-            //各キャラクターと弾
-            //自キャラ
-            mcData.setData(myChar);
-            myChar1.setData(mcData, fData);
-
+        //各キャラクターと弾のデータをセット-------------------------------------------------------------------
             //敵キャラ
             setCharData();
 
             //弾
             setBulletData();
+
+            //自キャラ
+            mcData.setData(myChar);
+            myChar1.setData(mcData, fData);
+        //--------------------------------------------------------------------------------
+
             startLabel.setVisibility(View.GONE);
 
             timer.schedule(new TimerTask() {
@@ -192,14 +210,23 @@ public class MainActivity extends AppCompatActivity {
 
     public void changePos(){
         //ヒットチェック
-        HitCheck.hitCheck(mcData, bData1);
+        HitCheck.hitCheck(mcData, b1Data);
 
         myChar1.move(action_flg);
 
         enemy1.move();
         e1Bullet.move();
+
         enemy2.move();
+        e2Bullet.move();
+
         enemy3.move();
+        e3Bullet.move();
+
+        //弾を表示
+        e1_1_bullet.setVisibility(View.VISIBLE);
+        e2_1_bullet.setVisibility(View.VISIBLE);
+        e3_1_bullet.setVisibility(View.VISIBLE);
 
         //自キャラの弾
         if(mc_bulletY < 0){
@@ -246,8 +273,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void setBulletData(){
-        bData1.setData(e1_bullet);
-        e1Bullet.setData(bData1, fData, eData1);
+        b1Data.setData(e1_1_bullet);
+        e1Bullet.setData(b1Data, fData, eData1);
+
+        b2Data.setData(e2_1_bullet);
+        e2Bullet.setData(b2Data, fData, eData2);
+
+        b3Data.setData(e3_1_bullet);
+        e3Bullet.setData(b3Data, fData, eData3);
     }
 
     //バックボタン無効化---------------------------------------------------------------------------------

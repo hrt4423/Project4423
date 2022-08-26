@@ -2,7 +2,7 @@ package io.github.hrt4423.project4423;
 
 import android.widget.ImageView;
 
-public class Enemy2Data extends ActivityData{
+public class Enemy2_Bullet_Data extends ActivityData{
     /*フィールド変数
     ImageView image;
     int imgHeight, imgWidth;
@@ -10,7 +10,7 @@ public class Enemy2Data extends ActivityData{
      */
 
     @Override
-    protected void setData(ImageView iv){
+    public void setData(ImageView iv){
         image = iv;
         imgX = image.getX();
         imgY = image.getY();
@@ -19,34 +19,34 @@ public class Enemy2Data extends ActivityData{
     }
 
     @Override
-    protected float getImgX(){
+    public float getImgX(){
         return imgX;
     }
 
     @Override
-    protected float getImgY() {
+    public float getImgY() {
         return imgY;
     }
 
     @Override
-    protected void setImgX(float imgX){
+    public void setImgX(float imgX){
         this.image.setX(imgX);
         this.imgX = imgX;
     }
 
     @Override
-    protected void setImgY(float imgY){
+    public void setImgY(float imgY){
         this.image.setY(imgY);
         this.imgY = imgY;
     }
 
     @Override
-    protected int getImgHeight(){
+    public int getImgHeight(){
         return imgHeight;
     }
 
     @Override
-    protected int getImgWidth(){
+    public int getImgWidth(){
         return imgWidth;
     }
 

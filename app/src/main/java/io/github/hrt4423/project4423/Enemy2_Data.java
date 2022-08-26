@@ -2,7 +2,7 @@ package io.github.hrt4423.project4423;
 
 import android.widget.ImageView;
 
-public class Enemy1Data extends ActivityData{
+public class Enemy2_Data extends ActivityData{
     /*フィールド変数
     ImageView image;
     int imgHeight, imgWidth;
