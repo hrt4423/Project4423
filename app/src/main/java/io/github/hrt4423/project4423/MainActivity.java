@@ -93,10 +93,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);//親クラスのメソッドを呼び出しておく。
         setContentView(R.layout.activity_main);//画面に表示すべきビューを設定する。
 
-
         soundPlayer = new SoundPlayer(this);
-
-
 
         //findViewByIdでactivity_mainで設定したidからviewを探す。
         myChar = findViewById(R.id.mychar);
@@ -146,9 +143,7 @@ public class MainActivity extends AppCompatActivity {
         //e_bullet.setVisibility(View.GONE);
 
         scoreLabel.setText(getString(R.string.score, 0));
-
     }
-
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
@@ -162,13 +157,6 @@ public class MainActivity extends AppCompatActivity {
             mcData.setData(myChar);
             myChar1.setData(mcData, fData);
 
-            //myChar座標の取得
-            myCharX = myChar.getX();
-            myCharY = myChar.getY();
-            //myCharサイズの取得
-            myCharWidth = myChar.getWidth();
-            myCharHeight = myChar.getHeight();
-
             //敵
             eData1.setData(enemy);
             enemy1.setData(eData1, fData);
@@ -181,12 +169,6 @@ public class MainActivity extends AppCompatActivity {
 
             eData3.setData(enemyth2);
             enemy3.setData(eData3,fData);
-
-
-
-            //弾　座標
-            mc_bulletX = mc_bullet.getX();
-            mc_bulletY = mc_bullet.getY();
 
             startLabel.setVisibility(View.GONE);
 
