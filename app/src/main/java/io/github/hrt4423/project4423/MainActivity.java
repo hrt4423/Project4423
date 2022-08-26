@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
     public ActivityData eData2 = new Enemy2Data();
 
     //敵３
-    public Enemy enemy3 = new Enemy3();
+    public Enemy enemy3 = new Enemy4();
     public ActivityData eData3 = new Enemy3Data();
 
     //弾１
@@ -195,6 +195,7 @@ public class MainActivity extends AppCompatActivity {
         HitCheck.hitCheck(mcData, bData1);
 
         myChar1.move(action_flg);
+
         enemy1.move();
         e1Bullet.move();
         enemy2.move();
