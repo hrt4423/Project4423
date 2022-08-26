@@ -13,6 +13,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="GAME OVER"
+        android:textColor="#9400D3"
         android:textSize="30sp"/>
 
     <ImageView
@@ -29,6 +30,7 @@
         android:layout_height="wrap_content"
         android:text="150"
         android:textSize="40sp"
+        android:textColor="#9400D3"
         android:layout_marginTop="80dp"/>
 
     <TextView
@@ -36,8 +38,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="High Score : 300"
-        android:textSize="20sp"
+        android:textSize="30sp"
+        android:textColor="#B1063A"
         android:layout_marginTop="80dp"/>
+
+
 
     <Button
         android:id="@+id/tryLabel"
@@ -46,6 +51,8 @@
         android:text="もう一度プレイ"
         android:layout_marginTop="50dp"
         android:onClick="tryAgain"/>
+
+
 
 
 
