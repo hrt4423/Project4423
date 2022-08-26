@@ -33,7 +33,6 @@ public class MainActivity extends AppCompatActivity {
      public MyChar1 myChar1 = new MyChar1();
      public MyCharData mcData = new MyCharData();
 
-
     //変数
     //ImageViewクラスの変数
     private ImageView myChar;
@@ -55,14 +54,6 @@ public class MainActivity extends AppCompatActivity {
     private  int myCharSpeed;
     private  float myCharX, myCharY;
     private int myCharWidth, myCharHeight;
-
-    //敵キャラ
-    /*
-        private int enemySpeed;
-        private float enemyX, enemyY;
-        private int enemySize;
-     */
-
 
     //弾　自キャラ
     private int mc_bulletSpeed;
