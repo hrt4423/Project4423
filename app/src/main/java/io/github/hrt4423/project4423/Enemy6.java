@@ -1,6 +1,7 @@
 package io.github.hrt4423.project4423;
-//敵側でギザギザ動き
-public class Enemy3 extends Enemy{
+//Enemy5の反転
+public class Enemy6 extends Enemy {
+
     @Override
     public void setData(ActivityData enemyData, FrameData frameData){
         eD = enemyData;
@@ -13,13 +14,11 @@ public class Enemy3 extends Enemy{
         //動く向き
         if(motionFlgX){
             //右
-            eD.setImgX(eD.getImgX() + speed);
+            eD.setImgX(eD.getImgX() - speed);
         }else{
             //左
-            eD.setImgX(eD.getImgX() - speed);
+            eD.setImgX(eD.getImgX() + speed);
         }
-
-
 
         if(motionFlgY){
             //上
@@ -30,13 +29,8 @@ public class Enemy3 extends Enemy{
         }
 
         //画面外の時の処理
-<<<<<<< HEAD
-
-=======
-
         if (eD.getImgX() < 0){
             eD.setImgX(1);
->>>>>>> main
             motionFlgX = true;
         }
         //画面外のときの処理
@@ -50,9 +44,10 @@ public class Enemy3 extends Enemy{
             motionFlgY = true;
         }
 
-        if(eD.getImgY() > fD.getFrameHeight() - eD.imgHeight-900){
-            eD.setImgY(fD.getFrameHeight() - eD.imgHeight-901);
+        if(eD.getImgY() > fD.getFrameHeight() - eD.imgHeight-1200){
+            eD.setImgY(fD.getFrameHeight() - eD.imgHeight-1201);
             motionFlgY = false;
         }
     }
+
 }

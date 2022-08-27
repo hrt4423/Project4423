@@ -38,7 +38,7 @@ public class ResultActivity extends AppCompatActivity {
         int highScore = sharedPreferences.getInt("HIGH_SCORE", 0);
 
         if (score > highScore) {
-            highScoreLabel.setText("High Score : " + score);
+            highScoreLabel.setText("New High Score : " + score);
 
             SharedPreferences.Editor editor = sharedPreferences.edit();
             editor.putInt("HIGH_SCORE", score);
