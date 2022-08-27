@@ -258,9 +258,24 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void hitCheck(){
-        HitCheck.hitCheck(mcData, b1Data);
-        if(HitCheck.getHitFlg()){ //trueならヒット
+        if(HitCheck.hitStatus_Enemy(eData1, mcBData)){
             score += 10;
+            mcBData.setImgX(mcData.getImgX());
+            mcBData.setImgY(mcData.getImgY());
+        }
+        if(HitCheck.hitStatus_Enemy(eData2, mcBData)){
+            score += 20;
+            mcBData.setImgX(mcData.getImgX());
+            mcBData.setImgY(mcData.getImgY());
+        }
+        if(HitCheck.hitStatus_Enemy(eData3, mcBData)){
+            score += 20;
+            mcBData.setImgX(mcData.getImgX());
+            mcBData.setImgY(mcData.getImgY());
+        }
+
+        HitCheck.hitStatus_MyChar(mcData, b1Data);
+        if(HitCheck.getHitFlg()){ //trueならヒット
             // Game Over!
             if (timer != null) {
                 timer.cancel();
@@ -274,9 +289,8 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         }
 
-        HitCheck.hitCheck(mcData, b2Data);
+        HitCheck.hitStatus_MyChar(mcData, b2Data);
         if(HitCheck.getHitFlg()){ //trueならヒット
-            score += 10;
             // Game Over!
             if (timer != null) {
                 timer.cancel();
@@ -290,9 +304,8 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         }
 
-        HitCheck.hitCheck(mcData, b3Data);
+        HitCheck.hitStatus_MyChar(mcData, b3Data);
         if(HitCheck.getHitFlg()){ //trueならヒット
-            score += 10;
             // Game Over!
             if (timer != null) {
                 timer.cancel();

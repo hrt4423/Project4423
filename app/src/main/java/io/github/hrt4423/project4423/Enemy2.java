@@ -1,5 +1,5 @@
 package io.github.hrt4423.project4423;
-//自キャラ側まで来るギザギザ
+
 public class Enemy2 extends Enemy {
 
     @Override
