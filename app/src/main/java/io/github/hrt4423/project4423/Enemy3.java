@@ -19,8 +19,6 @@ public class Enemy3 extends Enemy{
             eD.setImgX(eD.getImgX() - speed);
         }
 
-
-
         if(motionFlgY){
             //上
             eD.setImgY(eD.getImgY() + speed);
@@ -28,8 +26,6 @@ public class Enemy3 extends Enemy{
             //下
             eD.setImgY(eD.getImgY() - speed);
         }
-
-        
 
     }
 }
