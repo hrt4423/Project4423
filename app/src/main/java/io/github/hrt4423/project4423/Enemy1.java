@@ -1,5 +1,5 @@
 package io.github.hrt4423.project4423;
-
+//横動き
 public class Enemy1 extends Enemy{
 
     @Override
