@@ -13,10 +13,10 @@ public class Enemy3 extends Enemy{
         //動く向き
         /*if(motionFlgX){
             //右
-            eD.setImgX(eD.getImgX() + speed);
+            cD.setImgX(cD.getImgX() + speed);
         }else{
             //左
-            eD.setImgX(eD.getImgX() - speed);
+            cD.setImgX(cD.getImgX() - speed);
         }
 
          */
@@ -31,13 +31,13 @@ public class Enemy3 extends Enemy{
 
         //画面外の時の処理
         /*
-        if (eD.getImgX() < 0){
-            eD.setImgX(1);
+        if (cD.getImgX() < 0){
+            cD.setImgX(1);
             motionFlgX = true;
         }
         //画面外のときの処理
-        if (eD.getImgX() > fD.getScreenWidth() - eD.imgWidth) {
-            eD.setImgX(fD.getScreenWidth() - eD.imgWidth);
+        if (cD.getImgX() > fD.getScreenWidth() - cD.imgWidth) {
+            cD.setImgX(fD.getScreenWidth() - cD.imgWidth);
             motionFlgX = false;
         }
         */
