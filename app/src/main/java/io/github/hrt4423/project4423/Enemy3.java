@@ -30,13 +30,10 @@ public class Enemy3 extends Enemy{
         }
 
         //画面外の時の処理
-<<<<<<< HEAD
-
-=======
 
         if (eD.getImgX() < 0){
             eD.setImgX(1);
->>>>>>> main
+
             motionFlgX = true;
         }
         //画面外のときの処理
