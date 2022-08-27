@@ -1,6 +1,7 @@
 package io.github.hrt4423.project4423;
-//Enemy3の反転
-public class Enemy4 extends Enemy {
+//Enemy5の反転
+public class Enemy6 extends Enemy {
+
     @Override
     public void setData(ActivityData enemyData, FrameData frameData){
         eD = enemyData;
@@ -38,19 +39,15 @@ public class Enemy4 extends Enemy {
             motionFlgX = false;
         }
 
-
         if(eD.getImgY() < 0){
             eD.setImgY(1);
             motionFlgY = true;
         }
 
-        if(eD.getImgY() > fD.getFrameHeight() - eD.imgHeight-900){
-            eD.setImgY(fD.getFrameHeight() - eD.imgHeight-901);
+        if(eD.getImgY() > fD.getFrameHeight() - eD.imgHeight-1200){
+            eD.setImgY(fD.getFrameHeight() - eD.imgHeight-1201);
             motionFlgY = false;
-
-
         }
-
-
     }
+
 }

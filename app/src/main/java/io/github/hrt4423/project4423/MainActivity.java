@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
     public ActivityData b2Data = new Enemy2_Bullet_Data();
 
     //敵３
-    public Enemy enemy3 = new Enemy4();
+    public Enemy enemy3 = new Enemy3();
     public ActivityData eData3 = new Enemy3_Data();
     //弾3
     public Bullet e3Bullet = new Enemy2_Bullet();
