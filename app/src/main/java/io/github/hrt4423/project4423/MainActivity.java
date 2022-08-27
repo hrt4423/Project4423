@@ -45,8 +45,8 @@ public class MainActivity extends AppCompatActivity {
     public Enemy enemy3 = new Enemy3();
     public ActivityData eData3 = new Enemy3_Data();
     //弾3
-    public Bullet e3Bullet = new Enemy2_Bullet();
-    public ActivityData b3Data = new Enemy2_Bullet_Data();
+    public Bullet e3Bullet = new Enemy3_Bullet();
+    public ActivityData b3Data = new Enemy3_Bullet_Data();
 
 
     //変数
@@ -209,10 +209,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void changePos(){
-        //ヒットチェック
-        HitCheck.hitCheck(mcData, b1Data);
-        HitCheck.hitCheck(mcData, b2Data);
-        HitCheck.hitCheck(mcData, b3Data);
+        hitCheck();
 
         myChar1.move(action_flg);
 
@@ -242,7 +239,7 @@ public class MainActivity extends AppCompatActivity {
         }
         mc_bullet.setY(mc_bulletY);
 
-        //ゲームの継続判定------------------------------------------------------------------
+        /*ゲームの継続判定------------------------------------------------------------------
         if(HitCheck.getHitFlg()){ //trueならヒット
             score += 10;
             // Game Over!
@@ -258,6 +255,8 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         }
         //-----------------------------------------------------------------------------
+
+         */
 
         //スコアの更新
         scoreLabel.setText(getString(R.string.score, score));
@@ -283,6 +282,56 @@ public class MainActivity extends AppCompatActivity {
 
         b3Data.setData(e3_1_bullet);
         e3Bullet.setData(b3Data, fData, eData3);
+    }
+
+    public void hitCheck(){
+        HitCheck.hitCheck(mcData, b1Data);
+        if(HitCheck.getHitFlg()){ //trueならヒット
+            score += 10;
+            // Game Over!
+            if (timer != null) {
+                timer.cancel();
+                timer = null;
+                soundPlayer.playOverSound();
+            }
+
+            // 結果画面へ
+            Intent intent = new Intent(getApplicationContext(), ResultActivity.class);
+            intent.putExtra("SCORE", score);
+            startActivity(intent);
+        }
+
+        HitCheck.hitCheck(mcData, b2Data);
+        if(HitCheck.getHitFlg()){ //trueならヒット
+            score += 10;
+            // Game Over!
+            if (timer != null) {
+                timer.cancel();
+                timer = null;
+                soundPlayer.playOverSound();
+            }
+
+            // 結果画面へ
+            Intent intent = new Intent(getApplicationContext(), ResultActivity.class);
+            intent.putExtra("SCORE", score);
+            startActivity(intent);
+        }
+
+        HitCheck.hitCheck(mcData, b3Data);
+        if(HitCheck.getHitFlg()){ //trueならヒット
+            score += 10;
+            // Game Over!
+            if (timer != null) {
+                timer.cancel();
+                timer = null;
+                soundPlayer.playOverSound();
+            }
+
+            // 結果画面へ
+            Intent intent = new Intent(getApplicationContext(), ResultActivity.class);
+            intent.putExtra("SCORE", score);
+            startActivity(intent);
+        }
     }
 
     //バックボタン無効化---------------------------------------------------------------------------------
