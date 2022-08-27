@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Project4423</string>
+    <string name="app_name">4423シューティング</string>
     <string name="startLabel">タップしてスタート</string>
     <string name="score">Score : %d</string>
 
