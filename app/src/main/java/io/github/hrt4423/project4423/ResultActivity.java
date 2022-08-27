@@ -39,7 +39,7 @@ public class ResultActivity extends AppCompatActivity {
 
         if (score > highScore) {
             highScoreLabel.setText("New High Score : " + score);
-
+            //音を追加する
             SharedPreferences.Editor editor = sharedPreferences.edit();
             editor.putInt("HIGH_SCORE", score);
             editor.apply();
