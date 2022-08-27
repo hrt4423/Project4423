@@ -2,7 +2,7 @@ package io.github.hrt4423.project4423;
 
 import android.widget.ImageView;
 
-public class MyChar1_Data extends ActivityData{
+public class MyCharData extends ActivityData{
     @Override
     protected void setData(ImageView iv) {
         image = iv;

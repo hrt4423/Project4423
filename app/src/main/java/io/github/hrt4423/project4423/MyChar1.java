@@ -2,7 +2,7 @@ package io.github.hrt4423.project4423;
 
 public class MyChar1 extends MyChar{
     @Override
-    protected void setData(MyChar1_Data myCharData, FrameData frameData) {
+    protected void setData(MyCharData myCharData, FrameData frameData) {
         mcD = myCharData;
         fD = frameData;
 

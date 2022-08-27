@@ -27,5 +27,29 @@ public class Enemy3 extends Enemy{
             eD.setImgY(eD.getImgY() - speed);
         }
 
+<<<<<<< HEAD
+=======
+        //画面外の時の処理
+        /*
+        if (eD.getImgX() < 0){
+            eD.setImgX(1);
+            motionFlgX = true;
+        }
+        //画面外のときの処理
+        if (eD.getImgX() > fD.getScreenWidth() - eD.imgWidth) {
+            eD.setImgX(fD.getScreenWidth() - eD.imgWidth);
+            motionFlgX = false;
+        }
+        */
+        if(eD.getImgY() < 0){
+            eD.setImgY(1);
+            motionFlgY = true;
+        }
+
+        if(eD.getImgY() > fD.getFrameHeight() - eD.imgHeight){
+            eD.setImgY(fD.getFrameHeight() - eD.imgHeight);
+            motionFlgY = false;
+        }
+>>>>>>> parent of ed46035 (自キャラの弾の処理を分離)
     }
 }

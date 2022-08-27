@@ -25,10 +25,7 @@ public class MainActivity extends AppCompatActivity {
 
     //自キャラ
     public MyChar1 myChar1 = new MyChar1();
-    public MyChar1_Data mcData = new MyChar1_Data();
-    //自キャラ弾
-    public Bullet mcBullet = new MyChar1_Bullet();
-    public ActivityData mcBData = new MyChar1_Bullet_Data();
+    public MyCharData mcData = new MyCharData();
 
     //敵１
     public Enemy enemy1 = new Enemy1();
@@ -171,11 +168,17 @@ public class MainActivity extends AppCompatActivity {
             FrameLayout frame = findViewById(R.id.frame);
             fData.setFrameHeight(frame.getHeight());
 
+        //各キャラクターと弾のデータをセット-------------------------------------------------------------------
             //敵キャラ
             setCharData();
 
             //弾
             setBulletData();
+
+            //自キャラ
+            mcData.setData(myChar);
+            myChar1.setData(mcData, fData);
+        //--------------------------------------------------------------------------------
 
             startLabel.setVisibility(View.GONE);
 
@@ -209,7 +212,6 @@ public class MainActivity extends AppCompatActivity {
         hitCheck();
 
         myChar1.move(action_flg);
-        mcBullet.move();
 
         enemy1.move();
         e1Bullet.move();
@@ -225,6 +227,37 @@ public class MainActivity extends AppCompatActivity {
         e2_1_bullet.setVisibility(View.VISIBLE);
         e3_1_bullet.setVisibility(View.VISIBLE);
 
+        //自キャラの弾
+        if(mc_bulletY < 0){
+            mc_bulletY = mcData.getImgY();
+            //mc_bulletX = myCharX + mcBCorrection;
+            mc_bulletX = mcData.getImgX() + mcBCorrection;
+
+            mc_bullet.setX(mc_bulletX);
+        }else{
+            mc_bulletY -= mc_bulletSpeed;
+        }
+        mc_bullet.setY(mc_bulletY);
+
+        /*ゲームの継続判定------------------------------------------------------------------
+        if(HitCheck.getHitFlg()){ //trueならヒット
+            score += 10;
+            // Game Over!
+            if (timer != null) {
+                timer.cancel();
+                timer = null;
+                soundPlayer.playOverSound();
+            }
+
+            // 結果画面へ
+            Intent intent = new Intent(getApplicationContext(), ResultActivity.class);
+            intent.putExtra("SCORE", score);
+            startActivity(intent);
+        }
+        //-----------------------------------------------------------------------------
+
+         */
+
         //スコアの更新
         scoreLabel.setText(getString(R.string.score, score));
     }
@@ -238,9 +271,6 @@ public class MainActivity extends AppCompatActivity {
 
         eData3.setData(enemy3_1);
         enemy3.setData(eData3,fData);
-
-        mcData.setData(myChar);
-        myChar1.setData(mcData, fData);
     }
 
     public void setBulletData(){
@@ -252,9 +282,6 @@ public class MainActivity extends AppCompatActivity {
 
         b3Data.setData(e3_1_bullet);
         e3Bullet.setData(b3Data, fData, eData3);
-
-        mcBData.setData(mc_bullet);
-        mcBullet.setData(mcBData, fData, mcData);
     }
 
     public void hitCheck(){
