@@ -14,6 +14,8 @@
         android:text="@string/score"
         android:textSize="18sp"
         android:paddingLeft="10dp"
+        android:background="#FF6200EE"
+        android:textColor="#FFFF"
         android:gravity="center_vertical"/>
 
         <FrameLayout
