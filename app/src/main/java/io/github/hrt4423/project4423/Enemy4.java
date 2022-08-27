@@ -11,7 +11,7 @@ public class Enemy4 extends Enemy {
     @Override
     public void move(){
         //動く向き
-        if(motionFlg){
+        if(motionFlgX){
             //右
             eD.setImgX(eD.getImgX() - speed);
         }else{
@@ -30,12 +30,12 @@ public class Enemy4 extends Enemy {
         //画面外の時の処理
         if (eD.getImgX() < 0){
             eD.setImgX(1);
-            motionFlg = true;
+            motionFlgX = true;
         }
         //画面外のときの処理
         if (eD.getImgX() > fD.getScreenWidth() - eD.imgWidth) {
             eD.setImgX(fD.getScreenWidth() - eD.imgWidth);
-            motionFlg = false;
+            motionFlgX = false;
         }
 
 

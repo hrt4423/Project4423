@@ -13,7 +13,7 @@ public class Enemy1 extends Enemy{
     public void move(){
 
         //動く向き
-        if(motionFlg){
+        if(motionFlgX){
             //右
             eD.setImgX(eD.getImgX() + speed);
         }else{
@@ -22,14 +22,14 @@ public class Enemy1 extends Enemy{
         }
 
         //画面外の時の処理
-        if (eD.getImgX() < -1000){
+        if (eD.getImgX() < 0){
             eD.setImgX(eD.getImgX());
-            motionFlg = true;
+            motionFlgX = true;
         }
         //画面外のときの処理
-        if (eD.getImgX() > fD.getScreenWidth()) {
+        if (eD.getImgX() > fD.getScreenWidth() -eD.getImgWidth()) {
             eD.setImgX(fD.getScreenWidth() - eD.imgWidth);
-            motionFlg = false;
+            motionFlgX = false;
         }
     }
 }

@@ -211,6 +211,8 @@ public class MainActivity extends AppCompatActivity {
     public void changePos(){
         //ヒットチェック
         HitCheck.hitCheck(mcData, b1Data);
+        HitCheck.hitCheck(mcData, b2Data);
+        HitCheck.hitCheck(mcData, b3Data);
 
         myChar1.move(action_flg);
 
