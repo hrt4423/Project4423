@@ -13,6 +13,8 @@ public class SoundPlayer {
     private static int Myshot;
     private static int Enemyshot;
     private static int piriin;
+    private static int coin;
+    private static int newscore;
 
     public SoundPlayer(Context context) {
 
@@ -23,6 +25,8 @@ public class SoundPlayer {
         Myshot = soundPool.load(context,R.raw.se_shot10,1);
         Enemyshot = soundPool.load(context,R.raw.se_shot09,1);
         piriin = soundPool.load(context,R.raw.se_piriin2,1);
+        coin = soundPool.load(context,R.raw.coin04,1);
+        newscore = soundPool.load(context,R.raw.powerup03,1);
 
     }
 
@@ -42,8 +46,10 @@ public class SoundPlayer {
         soundPool.play(Enemyshot,1.0f,1.0f,1,0,1.0f);
     }
 
-    public void playPiriinSound(){
-        soundPool.play(piriin,1.0f,1.0f,1,0,1.0f);
-    }
+    public void playPiriinSound() { soundPool.play(piriin,1.0f,1.0f,1,0,1.0f); }
+
+    public void playCoinSound() { soundPool.play(coin,1.0f,1.0f,1,0,1.0f); }
+
+    public void playNewScoreSound() { soundPool.play(newscore,1.0f,1.0f,1,0,1.0f); }
 
 }
