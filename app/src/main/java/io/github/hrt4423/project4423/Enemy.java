@@ -10,10 +10,13 @@ abstract class Enemy {
     protected String enemyStatus = "S";//登場：A, 退場：E, 戦闘：F, 待機：S
 
     abstract protected void setData(ActivityData enemyData, FrameData frameData);
-
+    abstract protected void setEnemyStatus(String status);
     abstract protected void move();
+    abstract protected void selectMotion();
+    abstract protected void Appearance();
+    abstract protected void Exit();
+    abstract protected void Fight();
 
-    //abstract protected void Appearance();
 }
 
 

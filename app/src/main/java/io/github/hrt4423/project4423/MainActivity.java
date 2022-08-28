@@ -248,11 +248,11 @@ public class MainActivity extends AppCompatActivity {
         enemy1.move();
         e1Bullet.move();
 
-        //enemy2.move();
-        //e2Bullet.move();
+        enemy2.move();
+        e2Bullet.move();
 
-        //enemy3.move();
-        //e3Bullet.move();
+        enemy3.move();
+        e3Bullet.move();
     }
 
     public void hitCheck(){
@@ -260,17 +260,19 @@ public class MainActivity extends AppCompatActivity {
             score += 10;
             mcBData.setImgX(mcData.getImgX());
             mcBData.setImgY(mcData.getImgY());
-            enemy1.enemyStatus = "E";
+            enemy1.setEnemyStatus("E");
         }
         if(HitCheck.hitStatus_Enemy(eData2, mcBData)){
             score += 20;
             mcBData.setImgX(mcData.getImgX());
             mcBData.setImgY(mcData.getImgY());
+            enemy2.setEnemyStatus("E");
         }
         if(HitCheck.hitStatus_Enemy(eData3, mcBData)){
             score += 20;
             mcBData.setImgX(mcData.getImgX());
             mcBData.setImgY(mcData.getImgY());
+            enemy3.setEnemyStatus("E");
         }
 
         HitCheck.hitStatus_MyChar(mcData, b1Data);
