@@ -40,7 +40,6 @@ public class ResultActivity extends AppCompatActivity {
 
         SharedPreferences sharedPreferences = getSharedPreferences("GAME_DATA", MODE_PRIVATE);
         int highScore = sharedPreferences.getInt("HIGH_SCORE", 0);
-
         if (score > highScore) {
             highScoreLabel.setText("New High Score : " + score);
             soundPlayer.playNewScoreSound();
@@ -55,6 +54,10 @@ public class ResultActivity extends AppCompatActivity {
 
     public void tryAgain(View view) {
         startActivity(new Intent(getApplicationContext(), MainActivity.class));
+    }
+
+    public void titleAgain(View view) {
+        startActivity(new Intent(getApplicationContext(), StartActivity.class));
     }
 
     //バックボタン無効化
