@@ -133,15 +133,13 @@ public class MainActivity extends AppCompatActivity {
 
         //初期位置を設定　xmlファイルに分けれるかも。
         enemy1_1.setX(450.0f);
-        enemy1_1.setY(250.0f);
+        enemy1_1.setY(-300.0f);
 
-        enemy2_1.setX(250.0f);
-        enemy2_1.setY(450.0f);
-        e2_1_bullet.setX(250.0f);
-        e2_1_bullet.setY(450.0f);
+        enemy2_1.setX(750.0f);
+        enemy2_1.setY(-300.0f);
 
-        //e1_1_bullet.setX(497.0f); //enemyX + 47
-        //e1_1_bullet.setY(400.0f); //enemyY + 150
+        enemy3_1.setX(150.0f);
+        enemy3_1.setY(-300.0f);
 
         e1_1_bullet.setX(-100.0f);
         e2_1_bullet.setX(-100.0f);
@@ -149,10 +147,7 @@ public class MainActivity extends AppCompatActivity {
 
         myChar.setX(450.0f);
         myChar.setY(1500.0f);
-        mc_bullet.setX(506.0f); //myCharX + 56
-        mc_bullet.setY(1500.0f);
-        mc_bullet.setX(-70.0f);
-        mc_bullet.setY(-70.0f);
+        mc_bullet.setX(-100.0f);
 
         //弾を非表示
         e1_1_bullet.setVisibility(View.GONE);
@@ -204,21 +199,10 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
-
     public void changePos(){
         hitCheck();
 
-        myChar1.move(action_flg);
-        mcBullet.move();
-
-        enemy1.move();
-        e1Bullet.move();
-
-        enemy2.move();
-        e2Bullet.move();
-
-        enemy3.move();
-        e3Bullet.move();
+        move();
 
         //弾を表示
         e1_1_bullet.setVisibility(View.VISIBLE);
@@ -257,11 +241,26 @@ public class MainActivity extends AppCompatActivity {
         mcBullet.setData(mcBData, fData, mcData);
     }
 
+    public void move(){
+        myChar1.move(action_flg);
+        mcBullet.move();
+
+        enemy1.move();
+        e1Bullet.move();
+
+        //enemy2.move();
+        //e2Bullet.move();
+
+        //enemy3.move();
+        //e3Bullet.move();
+    }
+
     public void hitCheck(){
         if(HitCheck.hitStatus_Enemy(eData1, mcBData)){
             score += 10;
             mcBData.setImgX(mcData.getImgX());
             mcBData.setImgY(mcData.getImgY());
+            enemy1.enemyStatus = "E";
         }
         if(HitCheck.hitStatus_Enemy(eData2, mcBData)){
             score += 20;
