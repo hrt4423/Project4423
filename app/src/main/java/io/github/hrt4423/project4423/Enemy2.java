@@ -1,12 +1,13 @@
 package io.github.hrt4423.project4423;
 
-public class Enemy2 extends Enemy {
+public class Enemy2 extends Enemy{
 
     @Override
     public void setData(ActivityData enemyData, FrameData frameData){
         eD = enemyData;
         fD = frameData;
         speed = Math.round(fD.getScreenWidth()/60f);
+        //enemyStatus = "A";
     }
 
     @Override
@@ -16,11 +17,11 @@ public class Enemy2 extends Enemy {
 
     @Override
     public void move(){
-
+        selectMotion();
     }
 
     @Override
-    protected void selectMotion() {
+    public void selectMotion(){
         switch (enemyStatus) {
             case "A": //登場のとき
                 Appearance();
@@ -55,7 +56,7 @@ public class Enemy2 extends Enemy {
     }
 
     @Override
-    protected void Fight() {
+    public void Fight(){
         //動く向き
         if(motionFlgX){
             //右
@@ -95,3 +96,4 @@ public class Enemy2 extends Enemy {
         }
     }
 }
+
