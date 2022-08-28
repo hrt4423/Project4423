@@ -7,10 +7,11 @@ public class Enemy1 extends Enemy{
         eD = enemyData;
         fD = frameData;
         speed = Math.round(fD.getScreenWidth()/60f);
-        enemyStatus = "A";
+        //enemyStatus = "A";
     }
 
-    public void setStatus(String status){
+    @Override
+    protected void setEnemyStatus(String status) {
         enemyStatus = status;
     }
 
@@ -19,22 +20,24 @@ public class Enemy1 extends Enemy{
         selectMotion();
     }
 
+    @Override
     public void selectMotion(){
         switch (enemyStatus) {
-            case "A":
+            case "A": //登場のとき
                 Appearance();
                 break;
-            case "E":
+            case "E": //退場のとき
                 Exit();
                 break;
-            case "F":
+            case "F": //戦闘状態のとき
                 Fight();
                 break;
-            case "S":
+            case "S": //待機状態のとき
                 enemyStatus = "A";
         }
     }
 
+    @Override
     public void Appearance(){
         if(eD.getImgY() < 250) { //画面外の間動かす
             eD.setImgY(eD.getImgY() + speed);
@@ -43,6 +46,7 @@ public class Enemy1 extends Enemy{
         }
     }
 
+    @Override
     public void Exit(){
         if(eD.getImgY() > -300) { //画面内の間動かす
             eD.setImgY(eD.getImgY() - speed * 2);
@@ -51,6 +55,7 @@ public class Enemy1 extends Enemy{
         }
     }
 
+    @Override
     public void Fight(){
         //動く向き
         if(motionFlgX){
