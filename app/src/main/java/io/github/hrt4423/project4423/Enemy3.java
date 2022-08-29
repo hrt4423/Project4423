@@ -49,7 +49,7 @@ public class Enemy3 extends Enemy{
     @Override
     public void Exit(){
         if(eD.getImgY() > -300) { //画面内の間動かす
-            eD.setImgY(eD.getImgY() - speed * 2);
+            eD.setImgY(-350);
         }else{ //画面外に出たら待機状態に切り替え
             enemyStatus = "S";
         }
