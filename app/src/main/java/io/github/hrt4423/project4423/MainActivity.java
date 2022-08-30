@@ -213,6 +213,7 @@ public class MainActivity extends AppCompatActivity {
         scoreLabel.setText(getString(R.string.score, score));
         if(score == 100 || score == 300 || score == 500 || score == 1000 || score == 3000 || score == 5000 || score == 10000){
             soundPlayer.playPiriinSound();
+            score += 10;
         }
     }
 
