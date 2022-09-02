@@ -6,7 +6,7 @@ public class Enemy3_Bullet extends Bullet{
         bD = bulletData;
         fD = frameData;
         cD = charData;
-        speed = Math.round(fD.getScreenWidth()/30f);
+        speed = Math.round(fD.getScreenWidth()/30f) -10;
     }
 
     @Override
@@ -17,7 +17,7 @@ public class Enemy3_Bullet extends Bullet{
             bD.setImgX(cD.getImgX() + eBCorrectionX);
             bD.setImgY(cD.getImgY() + eBCorrectionY);
         }else{//弾を下に動かす
-            bD.setImgY(bD.getImgY() + speed-10);
+            bD.setImgY(bD.getImgY() + speed);
         }
     }
 }
