@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
     //弾１
     public Bullet e1Bullet = new Enemy1_Bullet();
     public ActivityData b1Data = new Enemy1_Bullet_Data();
-
+/*
     //敵２
     public Enemy enemy2 = new Enemy5();
     public ActivityData eData2 = new Enemy5_Data();
@@ -51,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
     public Bullet e3Bullet = new Enemy3_Bullet();
     public ActivityData b3Data = new Enemy3_Bullet_Data();
 
+ */
 
     //変数
     //ImageViewクラスの変数
@@ -76,7 +77,6 @@ public class MainActivity extends AppCompatActivity {
     private int mc_bulletSpeed;
     private float mc_bulletX, mc_bulletY;
     private int mc_bulletSize;
-
 
     //自キャラと弾のずれ補正値
     private int mcBCorrection = 56;
@@ -111,7 +111,6 @@ public class MainActivity extends AppCompatActivity {
         e1_1_bullet = findViewById(R.id.bullet_1);
         e2_1_bullet = findViewById(R.id.bullet_2);
         e3_1_bullet = findViewById(R.id.bullet_3);
-
 
         startLabel = findViewById(R.id.startLabel);
         scoreLabel = findViewById(R.id.scoreLabel);
@@ -220,26 +219,32 @@ public class MainActivity extends AppCompatActivity {
     public void setCharData(){
         eData1.setData(enemy1_1);
         enemy1.setData(eData1, fData);
-
+/*
         eData2.setData(enemy2_1);
         enemy2.setData(eData2,fData);
 
         eData3.setData(enemy3_1);
         enemy3.setData(eData3,fData);
 
+ */
+
         mcData.setData(myChar);
         myChar1.setData(mcData, fData);
+
+
     }
 
     public void setBulletData(){
         b1Data.setData(e1_1_bullet);
         e1Bullet.setData(b1Data, fData, eData1);
-
+/*
         b2Data.setData(e2_1_bullet);
         e2Bullet.setData(b2Data, fData, eData2);
 
         b3Data.setData(e3_1_bullet);
         e3Bullet.setData(b3Data, fData, eData3);
+
+ */
 
         mcBData.setData(mc_bullet);
         mcBullet.setData(mcBData, fData, mcData);
@@ -251,12 +256,14 @@ public class MainActivity extends AppCompatActivity {
 
         enemy1.move();
         e1Bullet.move();
-
+/*
         enemy2.move();
         e2Bullet.move();
 
         enemy3.move();
         e3Bullet.move();
+
+ */
     }
 
     public void hitCheck(){
@@ -267,6 +274,7 @@ public class MainActivity extends AppCompatActivity {
             mcBData.setImgY(mcData.getImgY());
             enemy1.setEnemyStatus("E");
         }
+/*
         if(HitCheck.hitStatus_Enemy(eData2, mcBData)){
             score += 10;
             soundPlayer.playHitSound();
@@ -282,8 +290,25 @@ public class MainActivity extends AppCompatActivity {
             enemy3.setEnemyStatus("E");
         }
 
-        HitCheck.hitStatus_MyChar(mcData, b1Data);
-        if(HitCheck.getHitFlg()){ //trueならヒット
+ */
+
+        //--------------------------------------------------------------------------------------------
+
+        if(HitCheck.hitStatus_MyChar(mcData, b1Data)){ //trueならヒット
+            // Game Over!
+            if (timer != null) {
+                timer.cancel();
+                timer = null;
+                soundPlayer.playOverSound();
+            }
+
+            // 結果画面へ
+            Intent intent = new Intent(getApplicationContext(), ResultActivity.class);
+            intent.putExtra("SCORE", score);
+            startActivity(intent);
+        }
+/*
+        if(HitCheck.hitStatus_MyChar(mcData, b2Data)){ //trueならヒット
             // Game Over!
             if (timer != null) {
                 timer.cancel();
@@ -297,8 +322,7 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         }
 
-        HitCheck.hitStatus_MyChar(mcData, b2Data);
-        if(HitCheck.getHitFlg()){ //trueならヒット
+        if(HitCheck.hitStatus_MyChar(mcData, b3Data)){ //trueならヒット
             // Game Over!
             if (timer != null) {
                 timer.cancel();
@@ -312,20 +336,7 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         }
 
-        HitCheck.hitStatus_MyChar(mcData, b3Data);
-        if(HitCheck.getHitFlg()){ //trueならヒット
-            // Game Over!
-            if (timer != null) {
-                timer.cancel();
-                timer = null;
-                soundPlayer.playOverSound();
-            }
-
-            // 結果画面へ
-            Intent intent = new Intent(getApplicationContext(), ResultActivity.class);
-            intent.putExtra("SCORE", score);
-            startActivity(intent);
-        }
+ */
     }
 
     //バックボタン無効化---------------------------------------------------------------------------------

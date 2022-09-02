@@ -7,7 +7,7 @@ public class HitCheck {
     public static boolean hit_flg;
     public static boolean score_flg;
 
-    public static void hitStatus_MyChar(ActivityData charData, ActivityData bulletData){
+    public static boolean hitStatus_MyChar(ActivityData charData, ActivityData bulletData){
         //ヒットしたかの判定
         int cHeight = charData.getImgHeight();
         int cWidth = charData.getImgWidth();
@@ -22,6 +22,8 @@ public class HitCheck {
         }else{
             hit_flg = false;
         }
+
+        return hit_flg;
     }
 
     public static boolean hitStatus_Enemy(ActivityData charData, ActivityData bulletData){
