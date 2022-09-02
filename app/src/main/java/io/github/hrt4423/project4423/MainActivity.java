@@ -38,11 +38,11 @@ public class MainActivity extends AppCompatActivity {
     public ActivityData b1Data = new Enemy1_Bullet_Data();
 
     //敵２
-    public Enemy enemy2 = new Enemy2();
-    public ActivityData eData2 = new Enemy2_Data();
+    public Enemy enemy2 = new Enemy5();
+    public ActivityData eData2 = new Enemy5_Data();
     //弾２
-    public Bullet e2Bullet = new Enemy2_Bullet();
-    public ActivityData b2Data = new Enemy2_Bullet_Data();
+    public Bullet e2Bullet = new Enemy5_Bullet();
+    public ActivityData b2Data = new Enemy5_Bullet_Data();
 
     //敵３
     public Enemy enemy3 = new Enemy3();
@@ -211,6 +211,10 @@ public class MainActivity extends AppCompatActivity {
 
         //スコアの更新
         scoreLabel.setText(getString(R.string.score, score));
+        if(score == 100 || score == 300 || score == 500 || score == 1000 || score == 3000 || score == 5000 || score == 10000){
+            soundPlayer.playPiriinSound();
+            score += 10;
+        }
     }
 
     public void setCharData(){
@@ -258,18 +262,21 @@ public class MainActivity extends AppCompatActivity {
     public void hitCheck(){
         if(HitCheck.hitStatus_Enemy(eData1, mcBData)){
             score += 10;
+            soundPlayer.playHitSound();
             mcBData.setImgX(mcData.getImgX());
             mcBData.setImgY(mcData.getImgY());
             enemy1.setEnemyStatus("E");
         }
         if(HitCheck.hitStatus_Enemy(eData2, mcBData)){
-            score += 20;
+            score += 10;
+            soundPlayer.playHitSound();
             mcBData.setImgX(mcData.getImgX());
             mcBData.setImgY(mcData.getImgY());
             enemy2.setEnemyStatus("E");
         }
         if(HitCheck.hitStatus_Enemy(eData3, mcBData)){
-            score += 20;
+            score += 10;
+            soundPlayer.playHitSound();
             mcBData.setImgX(mcData.getImgX());
             mcBData.setImgY(mcData.getImgY());
             enemy3.setEnemyStatus("E");

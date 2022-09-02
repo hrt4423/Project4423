@@ -17,7 +17,7 @@ public class Enemy3_Bullet extends Bullet{
             bD.setImgX(cD.getImgX() + eBCorrectionX);
             bD.setImgY(cD.getImgY() + eBCorrectionY);
         }else{//弾を下に動かす
-            bD.setImgY(bD.getImgY() + speed);
+            bD.setImgY(bD.getImgY() + speed-10);
         }
     }
 }
