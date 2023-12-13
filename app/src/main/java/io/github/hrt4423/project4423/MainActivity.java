@@ -83,15 +83,15 @@ public class MainActivity extends AppCompatActivity {
     private int eBCorrectionX = 47;
     private int eBCorrectionY = 150;
 
-    //-----------------------------------------------
+
     private  boolean action_flg = false;
 
+    //Timer
     private Timer timer = new Timer();
     private Handler handler = new Handler();
 
     // Sound
     private SoundPlayer soundPlayer;
-    //------------------------------------------------
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {//引数：アプリの状態情報
@@ -166,7 +166,7 @@ public class MainActivity extends AppCompatActivity {
             FrameLayout frame = findViewById(R.id.frame);
             fData.setFrameHeight(frame.getHeight());
 
-            //敵キャラ
+            //キャラデータ
             setCharData();
 
             //弾
